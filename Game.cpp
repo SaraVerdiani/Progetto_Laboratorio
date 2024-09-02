@@ -12,3 +12,15 @@ Game::~Game() {
 
 }
 
+void Game::run() {
+
+}
+
+void Game::update() {
+
+}
+
+void Game::render() {
+
+}
+
