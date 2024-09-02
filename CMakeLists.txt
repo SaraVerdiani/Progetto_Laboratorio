@@ -8,6 +8,8 @@ add_executable(Progetto_Laboratorio main.cpp
         stlastar.h
         Game.cpp
         Game.h
+        Map.cpp
+        Map.h
 )
 
 
