@@ -5,9 +5,22 @@
 #ifndef GAME_H
 #define GAME_H
 
+#include <SFML/Graphics.hpp>
+#include <SFML/System.hpp>
+
 
 
 class Game {
+
+public:
+    Game();
+    ~Game();
+
+
+
+private:
+
+
 
 };
 
