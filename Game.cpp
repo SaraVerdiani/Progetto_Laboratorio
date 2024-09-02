@@ -16,6 +16,13 @@ Game::~Game() {
 
 void Game::run() {
 
+    while(this->window->isOpen()) {
+
+        this->update();
+        this->render();
+
+    }
+
 }
 
 void Game::update() {
@@ -25,6 +32,10 @@ void Game::update() {
 }
 
 void Game::render() {
+
+    this->window->clear();
+
+    this->window->display();
 
 }
 
