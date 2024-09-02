@@ -4,6 +4,8 @@ project(Progetto_Laboratorio)
 set(CMAKE_CXX_STANDARD 20)
 
 add_executable(Progetto_Laboratorio main.cpp
+        fsa.h
+        stlastar.h
 )
 
 
