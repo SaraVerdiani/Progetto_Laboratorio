@@ -5,9 +5,19 @@
 #ifndef GAMETILE_H
 #define GAMETILE_H
 
+#include <string>
+
 
 
 class GameTile {
+
+public:
+    GameTile(const std::string &textureName, bool passable = true, bool exit = false);
+    ~GameTile();
+
+
+private:
+
 
 };
 
