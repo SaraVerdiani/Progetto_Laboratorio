@@ -24,6 +24,10 @@ public:
 
 
 private:
+    sf::RenderWindow* window;
+
+
+    void initWindow();
 
 
 
