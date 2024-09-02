@@ -6,6 +6,8 @@ set(CMAKE_CXX_STANDARD 20)
 add_executable(Progetto_Laboratorio main.cpp
         fsa.h
         stlastar.h
+        Game.cpp
+        Game.h
 )
 
 
