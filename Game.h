@@ -21,10 +21,13 @@ public:
     void update();
     void render();
 
+    void pollEvents();
+
 
 
 private:
     sf::RenderWindow* window;
+    sf::Event event;
 
 
     void initWindow();
