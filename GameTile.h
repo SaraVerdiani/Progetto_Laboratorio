@@ -6,6 +6,7 @@
 #define GAMETILE_H
 
 #include <string>
+#include <SFML/Graphics.hpp>
 
 
 
@@ -16,7 +17,15 @@ public:
     ~GameTile();
 
 
+
+
+
+
 private:
+    sf::Sprite sprite;
+    sf::Texture texture;
+    bool isPassable;
+    bool isExit;
 
 
 };
