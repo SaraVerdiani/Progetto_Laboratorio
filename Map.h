@@ -26,7 +26,15 @@ public:
 private:
     int map[30][35];
 
-    GameTile* grass;
+    GameTile* grassLeftCorner;
+    GameTile* grassMiddleUp;
+    GameTile* grassRightCorner;
+    GameTile* grassMiddleLeft;
+    GameTile* grassCenter;
+    GameTile* grassMiddleRight;
+    GameTile* grassLowCornerLeft;
+    GameTile* grassMiddleLow;
+    GameTile* grassLowCornerRight;
 
 
 
