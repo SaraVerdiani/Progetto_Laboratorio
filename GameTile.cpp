@@ -28,6 +28,7 @@ void GameTile::setUpSprite(std::string textureName) {
     }
 
     sprite.setTexture(texture);
+    sprite.setScale(3.f,3.f);
 
 }
 
