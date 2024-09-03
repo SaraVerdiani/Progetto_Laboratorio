@@ -43,6 +43,9 @@ int lvl1[30][35] = {
 
 Map::Map() {
 
+    grass = new GameTile("assets/textures/map.png",0.f,32.f,32.f,32.f, true,false);
+
+
     loadMap(lvl1);
 
 }

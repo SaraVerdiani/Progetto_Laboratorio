@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
+#include "Map.h"
 
 
 
@@ -29,8 +30,11 @@ private:
     sf::RenderWindow* window;
     sf::Event event;
 
+    Map* map;
+
 
     void initWindow();
+    void initMap();
 
 
 
