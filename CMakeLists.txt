@@ -12,6 +12,8 @@ add_executable(Progetto_Laboratorio main.cpp
         Map.h
         GameTile.cpp
         GameTile.h
+        Player.cpp
+        Player.h
 )
 
 
