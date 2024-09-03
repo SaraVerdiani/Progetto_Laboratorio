@@ -14,6 +14,8 @@ add_executable(Progetto_Laboratorio main.cpp
         GameTile.h
         Player.cpp
         Player.h
+        MapSearchNode.cpp
+        MapSearchNode.h
 )
 
 
