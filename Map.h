@@ -13,9 +13,12 @@ public:
     Map();
     ~Map();
 
+    void loadMap(int arr[30][35]);
+
 
 
 private:
+    int map[30][35];
 
 };
 

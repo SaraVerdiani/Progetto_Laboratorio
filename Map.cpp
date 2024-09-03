@@ -11,3 +11,17 @@ Map::Map() {
 Map::~Map() {
 
 }
+
+void Map::loadMap(int arr[30][35]) {
+
+    for (int i = 0; i < 30; i++) {
+
+        for (int j = 0; j < 35; j++) {
+
+            map[i][j] = arr[i][j];
+
+        }
+    }
+
+
+}
