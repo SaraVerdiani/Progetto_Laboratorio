@@ -28,3 +28,8 @@ void GameTile::setUpSprite(std::string textureName) {
     sprite.setTexture(texture);
 
 }
+
+sf::Sprite GameTile::getSprite() const {
+
+    return this->sprite;
+}

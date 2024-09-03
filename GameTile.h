@@ -18,6 +18,7 @@ public:
     ~GameTile();
 
     void setUpSprite(std::string textureName);
+    sf::Sprite getSprite() const;
 
 
 
