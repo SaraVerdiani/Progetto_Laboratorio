@@ -4,12 +4,22 @@
 
 #include "GameTile.h"
 
+
 GameTile::GameTile(const std::string &textureName, bool passable, bool exit) {
-
-
-
 
 }
 
+
 GameTile::~GameTile() {
+}
+
+void GameTile::setUpSprite(std::string textureName) {
+
+    if(!texture.loadFromFile(textureName)) {
+
+        std::cout << "ERROR loading texture " << textureName << std::endl;
+    }
+
+    sprite.setTexture(texture);
+
 }

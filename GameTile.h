@@ -7,6 +7,7 @@
 
 #include <string>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 
 
@@ -16,8 +17,7 @@ public:
     GameTile(const std::string &textureName, bool passable = true, bool exit = false);
     ~GameTile();
 
-
-
+    void setUpSprite(std::string textureName);
 
 
 
