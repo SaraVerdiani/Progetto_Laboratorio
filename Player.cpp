@@ -27,3 +27,10 @@ void Player::initTexture() {
 
 }
 
+void Player::initSprite() {
+
+    this->sprite.setTexture(texture);
+
+
+}
+

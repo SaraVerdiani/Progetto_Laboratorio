@@ -23,6 +23,7 @@ private:
     sf::Texture texture;
 
     void initTexture();
+    void initSprite();
 
 
 
