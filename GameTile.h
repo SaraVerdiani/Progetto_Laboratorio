@@ -14,7 +14,7 @@
 class GameTile {
 
 public:
-    GameTile(const std::string &textureName, bool passable = true, bool exit = false);
+    GameTile(const std::string &textureName,int rectLeft, int rectTop , int rectWidth, int rectHeight, bool passable = true, bool exit = false);
     ~GameTile();
 
     void setUpSprite(std::string textureName);
