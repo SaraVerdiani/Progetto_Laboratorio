@@ -7,6 +7,7 @@
 Player::Player() {
 
     this->initTexture();
+    this->initSprite();
 
 
 }
@@ -20,7 +21,6 @@ Player::~Player() {
 void Player::render(sf::RenderTarget &target) {
 
     target.draw(this->sprite);
-
 
 }
 
@@ -37,6 +37,7 @@ void Player::initTexture() {
 void Player::initSprite() {
 
     this->sprite.setTexture(texture);
+    this->sprite.setPosition(200.f,300.f);
 
 }
 

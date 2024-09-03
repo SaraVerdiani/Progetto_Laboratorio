@@ -39,6 +39,8 @@ void Game::render() {
 
     this->map->drawMap(this->window);
 
+    this->player->render(*this->window);
+
     this->window->display();
 
 }
