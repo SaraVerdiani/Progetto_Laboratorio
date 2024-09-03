@@ -15,6 +15,8 @@ public:
     Player();
     ~Player();
 
+    void render(sf::RenderTarget& target);
+
 
 
 
