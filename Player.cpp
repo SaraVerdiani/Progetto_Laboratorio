@@ -25,6 +25,57 @@ void Player::render(sf::RenderTarget &target) {
 }
 
 
+MapSearchNode * Player::findNode(sf::RenderWindow &target) {
+
+    AStarSearch<MapSearchNode> astarsearch;
+
+    MapSearchNode nodeStart;
+    MapSearchNode nodeEnd;
+
+    nodeStart.x = this->sprite.getPosition().x / 96 ;
+    nodeStart.y = this->sprite.getPosition().y / 96;
+
+    std::cout << this->sprite.getPosition().x << " " << this->sprite.getPosition().y << std::endl;
+
+
+
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+
+        sf::Vector2i pixelPos = sf::Mouse::getPosition(target);
+        sf::Vector2f worldPos = target.mapPixelToCoords(pixelPos);
+
+
+        nodeEnd.x = worldPos.x / 96;
+        nodeEnd.y = worldPos.y / 96;
+
+
+    }
+
+    astarsearch.SetStartAndGoalStates( nodeStart, nodeEnd );
+
+    cout << "Start: " << nodeStart.x << " , " << nodeStart.y << endl;
+    cout << "Goal: " << nodeEnd.x << " , " << nodeEnd.y << endl;
+
+    unsigned int SearchState;
+    unsigned int SearchStep = 0;
+
+    do {
+
+        SearchState = astarsearch.SearchStep();
+        SearchStep++;
+
+        cout << "Steps: " << SearchStep << endl;
+
+
+    } while(SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SEARCHING);
+
+    if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED ) {
+        cout << "Search found goal state\n";
+
+    }
+}
+
+
 void Player::initTexture() {
 
     if(!texture.loadFromFile("assets/textures/character.png")) {

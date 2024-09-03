@@ -7,6 +7,8 @@
 
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "MapSearchNode.h"
+#include "stlastar.h"
 
 
 
@@ -16,6 +18,10 @@ public:
     ~Player();
 
     void render(sf::RenderTarget& target);
+    MapSearchNode* findNode(sf::RenderWindow& target);
+
+
+
 
 
 
