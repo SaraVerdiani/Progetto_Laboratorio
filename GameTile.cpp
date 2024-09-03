@@ -7,6 +7,11 @@
 
 GameTile::GameTile(const std::string &textureName, bool passable, bool exit) {
 
+    isPassable = passable;
+    isExit = exit;
+
+    this->setUpSprite(textureName);
+
 }
 
 
