@@ -6,6 +6,8 @@
 
 Player::Player() {
 
+    this->initTexture();
+
 
 }
 
@@ -14,3 +16,14 @@ Player::~Player() {
 
 
 }
+
+
+void Player::initTexture() {
+
+    if(!texture.loadFromFile("assets/textures/character.png")) {
+
+        std::cout << "ERROR: COULD NOT LOAD PLAYER TEXTURE" << std::endl;
+    }
+
+}
+
