@@ -64,3 +64,30 @@ void Map::loadMap(int arr[30][35]) {
 
 
 }
+
+void Map::drawMap(sf::RenderTarget *target) {
+
+    int type = 0;
+
+    for (int i = 0; i < 30; i++) {
+        for (int j = 0; j < 35; j++) {
+            type = map[i][j];
+
+            switch (type) {
+                case 0:
+                    grass->getSprite().setPosition(j * 32.f, i * 32.f);
+                drawTile(*target, grass);
+                break;
+            }
+        }
+    }
+
+
+}
+
+void Map::drawTile(sf::RenderTarget &target, GameTile *tile) {
+
+    target.draw(this->grass->getSprite());
+
+
+}

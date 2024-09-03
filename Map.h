@@ -5,6 +5,8 @@
 #ifndef MAP_H
 #define MAP_H
 
+#include <SFML/Graphics.hpp>
+#include "GameTile.h"
 
 
 class Map {
@@ -14,11 +16,19 @@ public:
     ~Map();
 
     void loadMap(int arr[30][35]);
+    void drawMap(sf::RenderTarget* target);
+    void drawTile(sf::RenderTarget &target, GameTile* tile);
+
+
 
 
 
 private:
     int map[30][35];
+
+    GameTile* grass;
+
+
 
 };
 
