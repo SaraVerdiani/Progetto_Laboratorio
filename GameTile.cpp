@@ -31,7 +31,7 @@ void GameTile::setUpSprite(std::string textureName) {
 
 }
 
-sf::Sprite GameTile::getSprite() const {
+sf::Sprite& GameTile::getSprite() {
 
     return this->sprite;
 
