@@ -8,6 +8,7 @@ Game::Game() {
 
     this->initWindow();
     this->initMap();
+    this->initPlayer();
 
 }
 
@@ -73,5 +74,10 @@ void Game::initMap() {
 
     this->map = new Map();
 
+}
+
+void Game::initPlayer() {
+
+    this->player = new Player();
 }
 

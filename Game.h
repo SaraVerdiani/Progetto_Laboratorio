@@ -8,6 +8,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include "Map.h"
+#include "Player.h"
 
 
 
@@ -31,10 +32,12 @@ private:
     sf::Event event;
 
     Map* map;
+    Player* player;
 
 
     void initWindow();
     void initMap();
+    void initPlayer();
 
 
 
