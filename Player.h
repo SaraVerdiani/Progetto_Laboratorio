@@ -18,7 +18,8 @@ public:
     ~Player();
 
     void render(sf::RenderTarget& target);
-    MapSearchNode* findNode(sf::RenderWindow& target);
+    void findNode(sf::RenderWindow& target);
+    void updateMovement(sf::RenderWindow& target);
 
 
 

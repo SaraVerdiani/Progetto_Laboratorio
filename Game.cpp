@@ -30,6 +30,7 @@ void Game::run() {
 void Game::update() {
 
     this->pollEvents();
+    this->player->updateMovement(*this->window);
 
 }
 

@@ -25,7 +25,7 @@ void Player::render(sf::RenderTarget &target) {
 }
 
 
-MapSearchNode * Player::findNode(sf::RenderWindow &target) {
+void Player::findNode(sf::RenderWindow &target) {
 
     AStarSearch<MapSearchNode> astarsearch;
 
@@ -69,10 +69,23 @@ MapSearchNode * Player::findNode(sf::RenderWindow &target) {
 
     } while(SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SEARCHING);
 
-    if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED ) {
+    if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED )
         cout << "Search found goal state\n";
 
+    if (SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_FAILED)
+        cout << "Search failed\n";
+
+
+}
+
+void Player::updateMovement(sf::RenderWindow &target) {
+
+    if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+
+        this->findNode(target);
+
     }
+
 }
 
 
