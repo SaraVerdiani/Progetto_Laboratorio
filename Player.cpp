@@ -117,10 +117,19 @@ void Player::findNode(sf::RenderWindow &target) {
 
 void Player::updateMovement(sf::RenderWindow &target) {
 
+    static bool mouseWasPressed = false;
+
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
-        this->findNode(target);
+        if (!mouseWasPressed) {
 
+            this->findNode(target);
+            mouseWasPressed = true;
+
+        }
+
+    } else {
+        mouseWasPressed = false;
     }
 
         if (!path.empty() && currentNode < path.size()) {
@@ -131,12 +140,12 @@ void Player::updateMovement(sf::RenderWindow &target) {
             sf::Vector2f direction = targetPosition - currentPos;
             float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
 
-            std::cout << "Target pos: " << targetPosition.x << ", " << targetPosition.y << std::endl;
+           /* std::cout << "Target pos: " << targetPosition.x << ", " << targetPosition.y << std::endl;
             std::cout << "Current pos: " << currentPos.x << ", " << currentPos.y << std::endl;
             std::cout << "Length: " << length << std::endl;
+*/
 
-
-            if (length > 1.0f) {
+            if (length > 1.5f) {
 
                 direction /= length;
                 this->move(this->movementSpeed * direction.x, this->movementSpeed * direction.y);
@@ -146,7 +155,6 @@ void Player::updateMovement(sf::RenderWindow &target) {
                 currentNode++;
             }
         }
-
     }
 
 
