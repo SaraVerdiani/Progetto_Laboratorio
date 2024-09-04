@@ -20,6 +20,7 @@ public:
     void render(sf::RenderTarget& target);
     void findNode(sf::RenderWindow& target);
     void updateMovement(sf::RenderWindow& target);
+    void move(const float dir_x, const float dir_y);
 
 
 
@@ -31,8 +32,12 @@ private:
     sf::Sprite sprite;
     sf::Texture texture;
 
+    float movementSpeed;
+
     void initTexture();
     void initSprite();
+    void initVariables();
+
 
 
 

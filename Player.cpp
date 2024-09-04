@@ -8,6 +8,7 @@ Player::Player() {
 
     this->initTexture();
     this->initSprite();
+    this->initVariables();
 
 
 }
@@ -88,6 +89,12 @@ void Player::updateMovement(sf::RenderWindow &target) {
 
 }
 
+void Player::move(const float dir_x, const float dir_y) {
+
+    this->sprite.move(this->movementSpeed * dir_x, this->movementSpeed * dir_y);
+}
+
+
 
 void Player::initTexture() {
 
@@ -104,6 +111,12 @@ void Player::initSprite() {
     this->sprite.setPosition(200.f,300.f);
     this->sprite.setTextureRect(sf::IntRect(32.f, 72.f, 32.f, 36.f));
     this->sprite.setScale(2.f, 2.f);
+
+}
+
+void Player::initVariables() {
+
+    this->movementSpeed = 1.5f;
 
 }
 
