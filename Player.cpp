@@ -70,8 +70,44 @@ void Player::findNode(sf::RenderWindow &target) {
 
     } while(SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SEARCHING);
 
-    if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED )
+    if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED ) {
         cout << "Search found goal state\n";
+
+        MapSearchNode *node = astarsearch.GetSolutionStart();
+
+        this->path.clear();
+        this->currentNode = 0;
+
+        this->path.push_back(this->sprite.getPosition());
+
+        int steps = 0;
+
+        node->PrintNodeInfo();
+        for( ;; )
+        {
+            node = astarsearch.GetSolutionNext();
+
+            if( !node )
+            {
+                break;
+            }
+
+            node->PrintNodeInfo();
+
+            sf::Vector2f nextPos(node->x * 96.0f, node->y * 96.0f);
+
+            this->path.push_back(nextPos);
+
+            steps ++;
+
+        };
+
+        cout << "Solution steps " << steps << endl;
+
+
+        astarsearch.FreeSolutionNodes();
+
+    }
 
     if (SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_FAILED)
         cout << "Search failed\n";
@@ -87,11 +123,37 @@ void Player::updateMovement(sf::RenderWindow &target) {
 
     }
 
-}
+        if (!path.empty() && currentNode < path.size()) {
+
+            sf::Vector2f currentPos = this->sprite.getPosition();
+            sf::Vector2f targetPosition = path[currentNode];
+
+            sf::Vector2f direction = targetPosition - currentPos;
+            float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
+
+            std::cout << "Target pos: " << targetPosition.x << ", " << targetPosition.y << std::endl;
+            std::cout << "Current pos: " << currentPos.x << ", " << currentPos.y << std::endl;
+            std::cout << "Length: " << length << std::endl;
+
+
+            if (length > 1.0f) {
+
+                direction /= length;
+                this->move(this->movementSpeed * direction.x, this->movementSpeed * direction.y);
+
+            } else {
+
+                currentNode++;
+            }
+        }
+
+    }
+
 
 void Player::move(const float dir_x, const float dir_y) {
 
     this->sprite.move(this->movementSpeed * dir_x, this->movementSpeed * dir_y);
+
 }
 
 

@@ -9,6 +9,7 @@
 #include <iostream>
 #include "MapSearchNode.h"
 #include "stlastar.h"
+#include <cmath>
 
 
 
@@ -33,6 +34,9 @@ private:
     sf::Texture texture;
 
     float movementSpeed;
+
+    std::vector<sf::Vector2f> path;
+    int currentNode;
 
     void initTexture();
     void initSprite();
