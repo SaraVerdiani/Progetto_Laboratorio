@@ -5,11 +5,12 @@
 #include "GameTile.h"
 
 
-GameTile::GameTile(const std::string &textureName, int rectLeft, int rectTop , int rectWidth, int rectHeight, bool passable, bool exit) {
+GameTile::GameTile(const std::string &textureName, int rectLeft, int rectTop , int rectWidth, int rectHeight, sf::Vector2f scale, bool passable, bool exit) {
 
     isPassable = passable;
     isExit = exit;
     sprite.setTextureRect(sf::IntRect(rectLeft,rectTop, rectWidth, rectHeight));
+    sprite.setScale(scale);
 
 
     this->setUpSprite(textureName);
@@ -28,7 +29,7 @@ void GameTile::setUpSprite(std::string textureName) {
     }
 
     sprite.setTexture(texture);
-    sprite.setScale(3.f,3.f);
+    //sprite.setScale(3.f,3.f);
 
 }
 
