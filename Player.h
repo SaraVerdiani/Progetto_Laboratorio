@@ -11,16 +11,18 @@
 #include "stlastar.h"
 #include <cmath>
 
-
+enum PLAYER_ANIMATION_STATES {NOT_MOVING = 0, MOVING_LEFT, MOVING_RIGHT, MOVING_UP, MOVING_DOWN};
 
 class Player {
 public:
     Player();
     ~Player();
 
+
     void render(sf::RenderTarget& target);
     void findNode(sf::RenderWindow& target);
     void updateMovement(sf::RenderWindow& target);
+    void updateAnimations();
     void move(const float dir_x, const float dir_y);
 
 
@@ -35,12 +37,17 @@ private:
 
     float movementSpeed;
 
+    sf::IntRect currentFrame;
+    sf::Clock animationTimer;
+    short animState;
+
     std::vector<sf::Vector2f> path;
     int currentNode;
 
     void initTexture();
     void initSprite();
     void initVariables();
+    void initAnimations();
 
 
 
