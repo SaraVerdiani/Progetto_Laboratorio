@@ -9,15 +9,16 @@ Player::Player() {
     this->initTexture();
     this->initSprite();
     this->initVariables();
+    this->initAnimations();
 
 
 }
 
 Player::~Player() {
 
-
-
 }
+
+
 
 void Player::render(sf::RenderTarget &target) {
 
@@ -117,6 +118,8 @@ void Player::findNode(sf::RenderWindow &target) {
 
 void Player::updateMovement(sf::RenderWindow &target) {
 
+    this->animState = PLAYER_ANIMATION_STATES::NOT_MOVING;
+
     static bool mouseWasPressed = false;
 
     if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -143,6 +146,7 @@ void Player::updateMovement(sf::RenderWindow &target) {
            /* std::cout << "Target pos: " << targetPosition.x << ", " << targetPosition.y << std::endl;
             std::cout << "Current pos: " << currentPos.x << ", " << currentPos.y << std::endl;
             std::cout << "Length: " << length << std::endl;
+
 */
 
             if (length > 1.5f) {
@@ -150,12 +154,95 @@ void Player::updateMovement(sf::RenderWindow &target) {
                 direction /= length;
                 this->move(this->movementSpeed * direction.x, this->movementSpeed * direction.y);
 
+                if (direction.x > 0) {
+                    this->animState = PLAYER_ANIMATION_STATES::MOVING_RIGHT;
+                } else if (direction.x < 0) {
+                    this->animState = PLAYER_ANIMATION_STATES::MOVING_LEFT;
+                } else if (direction.y > 0) {
+                    this->animState = PLAYER_ANIMATION_STATES::MOVING_DOWN;
+                } else if (direction.y < 0) {
+                    this->animState = PLAYER_ANIMATION_STATES::MOVING_UP;
+                }
+
             } else {
 
                 currentNode++;
+                if (currentNode >= path.size()) {
+                    this->animState = PLAYER_ANIMATION_STATES::NOT_MOVING;
+
+                }
             }
         }
     }
+
+void Player::updateAnimations() {
+
+    if(this->animState == PLAYER_ANIMATION_STATES::MOVING_RIGHT) {
+
+        if(this->animationTimer.getElapsedTime().asSeconds() >= 0.15f) {
+            this->currentFrame.top = 36.f;
+            this->currentFrame.left += 32.f;
+
+            if(this->currentFrame.left >= 96.f)
+                this->currentFrame.left = 0.f;
+
+
+
+
+            this->animationTimer.restart();
+            this->sprite.setTextureRect(this->currentFrame);
+        }
+    }
+
+    if(this->animState == PLAYER_ANIMATION_STATES::MOVING_LEFT) {
+
+        if(this->animationTimer.getElapsedTime().asSeconds() >= 0.15f) {
+
+            this->currentFrame.top = 108.f;
+            this->currentFrame.left += 32.f;
+
+            if(this->currentFrame.left >= 96.f)
+                this->currentFrame.left = 0.f;
+
+
+            this->animationTimer.restart();
+            this->sprite.setTextureRect(this->currentFrame);
+
+
+        }
+    }
+
+    if(this->animState == PLAYER_ANIMATION_STATES::MOVING_DOWN) {
+
+        if(this->animationTimer.getElapsedTime().asSeconds() >= 0.15f) {
+
+            this->currentFrame.top = 72.f;
+            this->currentFrame.left += 32.f;
+
+            if(this->currentFrame.left >= 96.f)
+                this->currentFrame.left = 0.f;
+
+            this->animationTimer.restart();
+            this->sprite.setTextureRect(this->currentFrame);
+        }
+    }
+
+    if(this->animState == PLAYER_ANIMATION_STATES::MOVING_UP) {
+
+        if(this->animationTimer.getElapsedTime().asSeconds() >= 0.15f) {
+
+            this->currentFrame.top =0.f;
+            this->currentFrame.left += 32.f;
+
+            if(this->currentFrame.left >= 96.f)
+                this->currentFrame.left = 0.f;
+
+            this->animationTimer.restart();
+            this->sprite.setTextureRect(this->currentFrame);
+        }
+    }
+
+}
 
 
 void Player::move(const float dir_x, const float dir_y) {
@@ -179,7 +266,8 @@ void Player::initSprite() {
 
     this->sprite.setTexture(texture);
     this->sprite.setPosition(200.f,300.f);
-    this->sprite.setTextureRect(sf::IntRect(32.f, 72.f, 32.f, 36.f));
+    this->currentFrame = sf::IntRect(32.f, 72.f, 32.f, 36.f);
+    this->sprite.setTextureRect(this->currentFrame);
     this->sprite.setScale(2.f, 2.f);
 
 }
@@ -187,6 +275,12 @@ void Player::initSprite() {
 void Player::initVariables() {
 
     this->movementSpeed = 1.5f;
+
+}
+
+void Player::initAnimations() {
+
+    this->animationTimer.restart();
 
 }
 
