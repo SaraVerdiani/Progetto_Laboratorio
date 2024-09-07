@@ -35,6 +35,10 @@ private:
     GameTile* grassLowCornerLeft;
     GameTile* grassMiddleLow;
     GameTile* grassLowCornerRight;
+    GameTile* pathMiddleUp;
+    GameTile* pathMiddleLow;
+    GameTile* water;
+    GameTile* bridge;
 
 
 

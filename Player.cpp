@@ -33,8 +33,8 @@ void Player::findNode(sf::RenderWindow &target) {
     MapSearchNode nodeStart;
     MapSearchNode nodeEnd;
 
-    nodeStart.x = this->sprite.getPosition().x / 96 ;
-    nodeStart.y = this->sprite.getPosition().y / 96;
+    nodeStart.x = this->sprite.getPosition().x / 64 ;
+    nodeStart.y = this->sprite.getPosition().y / 64;
 
     std::cout << this->sprite.getPosition().x << " " << this->sprite.getPosition().y << std::endl;
 
@@ -46,8 +46,8 @@ void Player::findNode(sf::RenderWindow &target) {
         sf::Vector2f worldPos = target.mapPixelToCoords(pixelPos);
 
 
-        nodeEnd.x = worldPos.x / 96;
-        nodeEnd.y = worldPos.y / 96;
+        nodeEnd.x = worldPos.x / 64;
+        nodeEnd.y = worldPos.y / 64;
 
 
     }
@@ -94,7 +94,7 @@ void Player::findNode(sf::RenderWindow &target) {
 
             node->PrintNodeInfo();
 
-            sf::Vector2f nextPos(node->x * 96.0f, node->y * 96.0f);
+            sf::Vector2f nextPos(node->x * 64.0f, node->y * 64.0f);
 
             this->path.push_back(nextPos);
 
