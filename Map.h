@@ -39,6 +39,10 @@ private:
     GameTile* pathMiddleLow;
     GameTile* water;
     GameTile* bridge;
+    GameTile* stairsLeft;
+    GameTile* stairsRight;
+    GameTile* brick;
+    GameTile* brick1;
 
 
 

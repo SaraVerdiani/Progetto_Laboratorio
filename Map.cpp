@@ -8,12 +8,12 @@ int lvl1[30][35] = {
 
 {0,1,1,1,1,1,1,11,11,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2},
 {3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
-{9,9,9,9,9,9,9,12,12,9,9,9,9,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
-{10,10,10,10,10,10,10,12,12,10,10,10,10,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
-{3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
-{3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
-{3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
-{3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
+{9,9,9,9,9,9,9,12,12,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,9,4,4,4,4,5},
+{10,10,10,10,10,10,10,12,12,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,10,4,4,4,4,5},
+{3,4,4,4,4,4,4,11,11,4,4,4,4,13,14,4,4,4,4,13,14,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
+{3,4,4,4,4,4,4,11,11,15,15,15,15,13,14,15,15,15,16,13,14,15,15,15,15,15,15,15,15,15,4,4,4,4,5},
+{3,4,4,4,4,4,4,11,11,4,4,4,4,13,14,4,4,4,16,13,14,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
+{3,4,4,4,4,4,4,11,11,15,15,15,15,13,14,15,15,15,16,13,14,15,15,15,15,15,15,15,15,15,4,4,4,4,5},
 {3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
 {3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
 {3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
@@ -55,6 +55,10 @@ Map::Map() {
     pathMiddleLow = new GameTile("assets/textures/map.png",128.f,224.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
     water = new GameTile("assets/textures/map.png",96.f,672.f,32.f,32.f, sf::Vector2f(2.f,2.f), false, false);
     bridge = new GameTile("assets/textures/map.png",256.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
+    stairsLeft = new GameTile("assets/textures/map.png",352.f,192.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
+    stairsRight = new GameTile("assets/textures/map.png",384.f,192.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
+    brick = new GameTile("assets/textures/map.png",128.f,128.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
+    brick1 = new GameTile("assets/textures/map.png",160.f,96.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
 
 
 
@@ -140,6 +144,24 @@ void Map::drawMap(sf::RenderTarget *target) {
                 case 12:
                     bridge->getSprite().setPosition(j * 64.f, i * 64.f);
                 drawTile(*target, bridge);
+                break;
+                case 13:
+                    stairsLeft->getSprite().setPosition(j * 64.f, i * 64.f);
+                drawTile(*target, stairsLeft);
+                break;
+                case 14:
+                    stairsRight->getSprite().setPosition(j * 64.f, i * 64.f);
+                drawTile(*target, stairsRight);
+                break;
+                case 15:
+                    brick->getSprite().setPosition(j * 64.f , i * 64.f);
+                drawTile(*target, brick);
+                break;
+                case 16:
+                    brick1->getSprite().setPosition(j * 64.f, i * 64.f);
+                drawTile(*target, brick1);
+                break;
+
             }
         }
     }
@@ -150,6 +172,7 @@ void Map::drawMap(sf::RenderTarget *target) {
 void Map::drawTile(sf::RenderTarget &target, GameTile *tile) {
 
     target.draw(tile->getSprite());
+
 
 
 }
