@@ -5,10 +5,8 @@
 #include "GameTile.h"
 
 
-GameTile::GameTile(const std::string &textureName, int rectLeft, int rectTop , int rectWidth, int rectHeight, sf::Vector2f scale, bool passable, bool exit) {
+GameTile::GameTile(const std::string &textureName, int rectLeft, int rectTop , int rectWidth, int rectHeight, sf::Vector2f scale) {
 
-    isPassable = passable;
-    isExit = exit;
     sprite.setTextureRect(sf::IntRect(rectLeft,rectTop, rectWidth, rectHeight));
     sprite.setScale(scale);
 

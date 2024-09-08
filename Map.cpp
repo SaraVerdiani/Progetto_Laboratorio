@@ -42,23 +42,23 @@ int lvl1[30][35] = {
 
 Map::Map() {
 
-    grassLeftCorner = new GameTile("assets/textures/map.png",0.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f), true,false);
-    grassMiddleUp = new GameTile("assets/textures/map.png",32.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f), true,false);
-    grassRightCorner = new GameTile("assets/textures/map.png",64.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f), true,false);
-    grassMiddleLeft = new GameTile("assets/textures/map.png",0.f,64.f,32.f,32.f,sf::Vector2f(2.f,2.f),  true,false);
-    grassCenter = new GameTile("assets/textures/map.png",32.f,64.f,32.f,32.f, sf::Vector2f(2.f,2.f), true,false);
-    grassMiddleRight = new GameTile("assets/textures/map.png",64.f,64.f,32.f,32.f, sf::Vector2f(2.f,2.f), true,false);
-    grassLowCornerLeft = new GameTile("assets/textures/map.png",0.f,96.f,32.f,32.f, sf::Vector2f(2.f,2.f),  true,false);
-    grassMiddleLow = new GameTile("assets/textures/map.png",32.f,96.f,32.f,32.f,sf::Vector2f(2.f,2.f),  true,false);
-    grassLowCornerRight = new GameTile("assets/textures/map.png",64.f,96.f,32.f,32.f, sf::Vector2f(2.f,2.f), true,false);
-    pathMiddleUp = new GameTile("assets/textures/map.png",128.f,160.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
-    pathMiddleLow = new GameTile("assets/textures/map.png",128.f,224.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
-    water = new GameTile("assets/textures/map.png",96.f,672.f,32.f,32.f, sf::Vector2f(2.f,2.f), false, false);
-    bridge = new GameTile("assets/textures/map.png",256.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
-    stairsLeft = new GameTile("assets/textures/map.png",352.f,192.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
-    stairsRight = new GameTile("assets/textures/map.png",384.f,192.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
-    brick = new GameTile("assets/textures/map.png",128.f,128.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
-    brick1 = new GameTile("assets/textures/map.png",160.f,96.f,32.f,32.f, sf::Vector2f(2.f,2.f), true, false);
+    grassLeftCorner = new GameTile("assets/textures/map.png",0.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    grassMiddleUp = new GameTile("assets/textures/map.png",32.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    grassRightCorner = new GameTile("assets/textures/map.png",64.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    grassMiddleLeft = new GameTile("assets/textures/map.png",0.f,64.f,32.f,32.f,sf::Vector2f(2.f,2.f));
+    grassCenter = new GameTile("assets/textures/map.png",32.f,64.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    grassMiddleRight = new GameTile("assets/textures/map.png",64.f,64.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    grassLowCornerLeft = new GameTile("assets/textures/map.png",0.f,96.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    grassMiddleLow = new GameTile("assets/textures/map.png",32.f,96.f,32.f,32.f,sf::Vector2f(2.f,2.f));
+    grassLowCornerRight = new GameTile("assets/textures/map.png",64.f,96.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    pathMiddleUp = new GameTile("assets/textures/map.png",128.f,160.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    pathMiddleLow = new GameTile("assets/textures/map.png",128.f,224.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    water = new GameTile("assets/textures/map.png",96.f,672.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    bridge = new GameTile("assets/textures/map.png",256.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    stairsLeft = new GameTile("assets/textures/map.png",352.f,192.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    stairsRight = new GameTile("assets/textures/map.png",384.f,192.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    brick = new GameTile("assets/textures/map.png",128.f,128.f,32.f,32.f, sf::Vector2f(2.f,2.f));
+    brick1 = new GameTile("assets/textures/map.png",160.f,96.f,32.f,32.f, sf::Vector2f(2.f,2.f));
 
 
 
