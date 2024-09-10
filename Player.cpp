@@ -40,7 +40,6 @@ void Player::findNode(sf::RenderWindow &target) {
     std::cout << this->sprite.getPosition().x << " " << this->sprite.getPosition().y << std::endl;
 
 
-
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
         sf::Vector2i pixelPos = sf::Mouse::getPosition(target);
@@ -114,11 +113,28 @@ void Player::findNode(sf::RenderWindow &target) {
         cout << "Search failed\n";
 
 
+
+    // TESTING
+
+ /*   sf::Vector2f startPos = this->sprite.getPosition();
+
+    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+
+        sf::Vector2i pixelPos = sf::Mouse::getPosition(target);
+        sf::Vector2f endPos = target.mapPixelToCoords(pixelPos);
+
+        this->findNodeTest(startPos, endPos);
+
+    }
+    */
+
+
+
+
 }
 
 void Player::updateMovement(sf::RenderWindow &target) {
 
-    this->animState = PLAYER_ANIMATION_STATES::NOT_MOVING;
 
     static bool mouseWasPressed = false;
 
@@ -145,34 +161,43 @@ void Player::updateMovement(sf::RenderWindow &target) {
 
            /* std::cout << "Target pos: " << targetPosition.x << ", " << targetPosition.y << std::endl;
             std::cout << "Current pos: " << currentPos.x << ", " << currentPos.y << std::endl;
-            std::cout << "Length: " << length << std::endl;
+            std::cout << "Length: " << length << std::endl; */
 
-*/
+
 
             if (length > 1.5f) {
 
                 direction /= length;
                 this->move(this->movementSpeed * direction.x, this->movementSpeed * direction.y);
 
-                if (direction.x > 0) {
-                    this->animState = PLAYER_ANIMATION_STATES::MOVING_RIGHT;
-                } else if (direction.x < 0) {
-                    this->animState = PLAYER_ANIMATION_STATES::MOVING_LEFT;
-                } else if (direction.y > 0) {
-                    this->animState = PLAYER_ANIMATION_STATES::MOVING_DOWN;
-                } else if (direction.y < 0) {
-                    this->animState = PLAYER_ANIMATION_STATES::MOVING_UP;
+                if (std::fabs(direction.x) > std::fabs(direction.y)) {
+                    if (direction.x > 0) {
+                        this->animState = PLAYER_ANIMATION_STATES::MOVING_RIGHT;
+                    } else {
+                        this->animState = PLAYER_ANIMATION_STATES::MOVING_LEFT;
+                    }
+                } else {
+
+                    if (direction.y > 0) {
+                        this->animState = PLAYER_ANIMATION_STATES::MOVING_DOWN;
+                    } else {
+                        this->animState = PLAYER_ANIMATION_STATES::MOVING_UP;
+                    }
                 }
 
             } else {
 
+                this->sprite.setPosition(targetPosition);
                 currentNode++;
+
                 if (currentNode >= path.size()) {
+
                     this->animState = PLAYER_ANIMATION_STATES::NOT_MOVING;
 
                 }
             }
-        }
+        } else
+            this->animState = PLAYER_ANIMATION_STATES::NOT_MOVING;
     }
 
 void Player::updateAnimations() {
@@ -185,9 +210,6 @@ void Player::updateAnimations() {
 
             if(this->currentFrame.left >= 96.f)
                 this->currentFrame.left = 0.f;
-
-
-
 
             this->animationTimer.restart();
             this->sprite.setTextureRect(this->currentFrame);
@@ -241,7 +263,6 @@ void Player::updateAnimations() {
             this->sprite.setTextureRect(this->currentFrame);
         }
     }
-
 }
 
 
@@ -251,6 +272,69 @@ void Player::move(const float dir_x, const float dir_y) {
 
 }
 
+
+
+
+float Player::getMovementSpeed() const {
+
+    return this->movementSpeed;
+}
+
+sf::Sprite Player::getSprite() const {
+
+    return this->sprite;
+}
+
+sf::Texture Player::getTexture() const {
+
+    return this->texture;
+}
+
+sf::Vector2f Player::getPosition() const {
+
+    return this->sprite.getPosition();
+}
+
+sf::IntRect Player::getCurrentFrame() const {
+
+    return this->currentFrame;
+}
+
+void Player::setMovementSpeed(const float movementSpeed) {
+
+    this->movementSpeed = movementSpeed;
+}
+
+void Player::setPosition(const float x, const float y) {
+
+    this->sprite.setPosition(x, y);
+}
+
+std::vector<sf::Vector2f> Player::getPath() const {
+
+    return this->path;
+}
+
+void Player::setPath(const std::vector<sf::Vector2f> &path) {
+
+    this->path = path;
+
+}
+
+short Player::getAnimState() const {
+
+    return this->animState;
+}
+
+void Player::setAnimState(const short animState) {
+
+    this->animState = animState;
+}
+
+sf::Clock Player::getAnimationTimer() const {
+
+    return this->animationTimer;
+}
 
 
 void Player::initTexture() {
@@ -267,7 +351,7 @@ void Player::initSprite() {
     this->sprite.setTexture(texture);
     this->sprite.setPosition(200.f,300.f);
     this->currentFrame = sf::IntRect(32.f, 72.f, 32.f, 36.f);
-    this->sprite.setTextureRect(this->currentFrame);
+    this->sprite.setTextureRect(this->currentFrame);  //!
     this->sprite.setScale(2.f, 2.f);
 
 }
@@ -284,3 +368,84 @@ void Player::initAnimations() {
 
 }
 
+
+ // TESTING
+
+/*
+void Player::findNodeTest(sf::Vector2f startPos, sf::Vector2f endPos) {
+
+    AStarSearch<MapSearchNode> astarsearch;
+
+    MapSearchNode nodeStart;
+    MapSearchNode nodeEnd;
+
+    nodeStart.x = startPos.x / 64 ;
+    nodeStart.y = startPos.y / 64;
+
+
+    nodeEnd.x = endPos.x / 64;
+    nodeEnd.y = endPos.y / 64;
+
+    astarsearch.SetStartAndGoalStates( nodeStart, nodeEnd );
+
+    cout << "Start: " << nodeStart.x << " , " << nodeStart.y << endl;
+    cout << "Goal: " << nodeEnd.x << " , " << nodeEnd.y << endl;
+
+    unsigned int SearchState;
+    unsigned int SearchStep = 0;
+
+    do {
+
+        SearchState = astarsearch.SearchStep();
+        SearchStep++;
+
+        cout << "Steps: " << SearchStep << endl;
+
+
+    } while(SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SEARCHING);
+
+    if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED ) {
+        cout << "Search found goal state\n";
+
+        MapSearchNode *node = astarsearch.GetSolutionStart();
+
+        this->path.clear();
+        this->currentNode = 0;
+
+        this->path.push_back(startPos);
+
+        int steps = 0;
+
+        node->PrintNodeInfo();
+        for( ;; )
+        {
+            node = astarsearch.GetSolutionNext();
+
+            if( !node )
+            {
+                break;
+            }
+
+            node->PrintNodeInfo();
+
+            sf::Vector2f nextPos(node->x * 64.0f, node->y * 64.0f);
+
+            this->path.push_back(nextPos);
+
+            steps ++;
+
+        };
+
+        cout << "Solution steps " << steps << endl;
+
+
+        astarsearch.FreeSolutionNodes();
+
+    }
+
+    if (SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_FAILED)
+        cout << "Search failed\n";
+
+
+}
+*/

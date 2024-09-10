@@ -25,10 +25,20 @@ public:
     void updateAnimations();
     void move(const float dir_x, const float dir_y);
 
+    //void findNodeTest(sf::Vector2f startPos, sf::Vector2f endPos); TESTING
 
-
-
-
+    float getMovementSpeed() const;
+    sf::Sprite getSprite() const;
+    sf::Texture getTexture() const;
+    sf::Vector2f getPosition() const;
+    sf::IntRect getCurrentFrame() const;
+    void setMovementSpeed(const float movementSpeed);
+    void setPosition(const float x, const float y);
+    std::vector<sf::Vector2f> getPath() const;
+    void setPath(const std::vector<sf::Vector2f>& path);
+    short getAnimState() const;
+    void setAnimState(const short animState);
+    sf::Clock getAnimationTimer() const;
 
 
 private:
