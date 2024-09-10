@@ -4,7 +4,9 @@
 
 #include "Map.h"
 
-int lvl1[30][35] = {
+#include <array>
+
+std::array<std::array<int, 35>, 30> lvl1 = {{
 
 {0,1,1,1,1,1,1,11,11,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2},
 {3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
@@ -37,7 +39,7 @@ int lvl1[30][35] = {
 {3,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
 {6,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,7},
 
-};
+}};
 
 
 Map::Map() {
@@ -64,20 +66,37 @@ Map::Map() {
 
     loadMap(lvl1);
 
+
 }
 
 Map::~Map() {
 
+    delete grassLeftCorner;
+    delete grassMiddleUp;
+    delete grassRightCorner;
+    delete grassMiddleLeft;
+    delete grassCenter;
+    delete grassMiddleRight;
+    delete grassLowCornerLeft;
+    delete grassMiddleLow;
+    delete grassLowCornerRight;
+    delete pathMiddleUp;
+    delete pathMiddleLow;
+    delete water;
+    delete bridge;
+    delete stairsLeft;
+    delete stairsRight;
+    delete brick;
+    delete brick1;
+
 }
 
-void Map::loadMap(int arr[30][35]) {
+void Map::loadMap(std::array<std::array<int, 35>, 30> arr) {
 
-    for (int i = 0; i < 30; i++) {
-
-        for (int j = 0; j < 35; j++) {
+    for(int i = 0; i < 30; i++) {
+        for(int j = 0; j < 35; j++) {
 
             map[i][j] = arr[i][j];
-
         }
     }
 
@@ -89,7 +108,9 @@ void Map::drawMap(sf::RenderTarget *target) {
     int type = 0;
 
     for (int i = 0; i < 30; i++) {
+
         for (int j = 0; j < 35; j++) {
+
             type = map[i][j];
 
             switch (type) {
@@ -176,3 +197,11 @@ void Map::drawTile(sf::RenderTarget &target, GameTile *tile) {
 
 
 }
+
+std::array<std::array<int, 35>, 30> Map::getMap() const {
+
+    return this->map;
+
+}
+
+

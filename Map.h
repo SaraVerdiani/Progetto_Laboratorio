@@ -7,6 +7,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "GameTile.h"
+#include <array>
 
 
 class Map {
@@ -15,16 +16,16 @@ public:
     Map();
     ~Map();
 
-    void loadMap(int arr[30][35]);
+    void loadMap(std::array<std::array<int, 35>, 30> arr);
     void drawMap(sf::RenderTarget* target);
     void drawTile(sf::RenderTarget &target, GameTile* tile);
 
-
+    std::array<std::array<int, 35>, 30> getMap() const;
 
 
 
 private:
-    int map[30][35];
+    std::array<std::array<int, 35>, 30> map;
 
     GameTile* grassLeftCorner;
     GameTile* grassMiddleUp;
