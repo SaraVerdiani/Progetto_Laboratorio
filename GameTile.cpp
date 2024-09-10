@@ -37,3 +37,10 @@ sf::Sprite& GameTile::getSprite() {
 
 }
 
+sf::Texture  GameTile::getTexture() const {
+
+    return this->texture;
+}
+
+
+

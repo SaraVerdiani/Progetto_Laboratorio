@@ -19,6 +19,9 @@ public:
 
     void setUpSprite(std::string textureName);
     sf::Sprite& getSprite();
+    sf::Texture getTexture() const;
+
+
 
 
 
