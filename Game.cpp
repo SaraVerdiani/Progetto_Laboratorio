@@ -121,7 +121,7 @@ Player * Game::getPlayer() const {
 
 void Game::initWindow() {
 
-    this->window = new sf::RenderWindow(sf::VideoMode(1920,1080),"A* algorithm", sf::Style::Default);
+    this->window = new sf::RenderWindow(sf::VideoMode(1920,1024),"A* algorithm", sf::Style::Default);
     this->window->setFramerateLimit(frameRateLimit);
     this->window->setVerticalSyncEnabled(isVerticalSyncEnabled);
 

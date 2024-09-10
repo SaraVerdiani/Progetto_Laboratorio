@@ -16,16 +16,16 @@ public:
     Map();
     ~Map();
 
-    void loadMap(std::array<std::array<int, 35>, 30> arr);
+    void loadMap(std::array<std::array<int, 30>, 16> arr);
     void drawMap(sf::RenderTarget* target);
     void drawTile(sf::RenderTarget &target, GameTile* tile);
 
-    std::array<std::array<int, 35>, 30> getMap() const;
+    std::array<std::array<int, 30>, 16> getMap() const;
 
 
 
 private:
-    std::array<std::array<int, 35>, 30> map;
+    std::array<std::array<int, 30>, 16> map;
 
     GameTile* grassLeftCorner;
     GameTile* grassMiddleUp;
