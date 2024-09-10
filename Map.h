@@ -22,6 +22,24 @@ public:
 
     std::array<std::array<int, 30>, 16> getMap() const;
 
+    GameTile* getGrassLeftCorner() const;
+    GameTile* getGrassMiddleUp() const;
+    GameTile* getGrassRightCorner() const;
+    GameTile* getGrassMiddleLeft() const;
+    GameTile* getGrassCenter() const;
+    GameTile* getGrassMiddleRight() const;
+    GameTile* getGrassLowCornerLeft() const;
+    GameTile* getGrassMiddleLow() const;
+    GameTile* getGrassLowCornerRight() const;
+    GameTile* getPathMiddleUp() const;
+    GameTile* getPathMiddleLow() const;
+    GameTile* getWater() const;
+    GameTile* getBridge() const;
+    GameTile* getStairsLeft() const;
+    GameTile* getStairsRight() const;
+    GameTile* getBrick() const;
+    GameTile* getBrick1() const;
+
 
 
 private:
