@@ -22,14 +22,24 @@ public:
     void run();
     void update();
     void render();
-
     void pollEvents();
+
+    //void pollEventsTest(sf::Event& e); // TESTING
+
+    sf::RenderWindow* getWindow() const;
+    int getFrameRateLimit() const;
+    bool getVerticalSync() const;
+    Map* getMap() const;
+    Player* getPlayer() const;
+
 
 
 
 private:
     sf::RenderWindow* window;
     sf::Event event;
+    int frameRateLimit;
+    bool isVerticalSyncEnabled;
 
     Map* map;
     Player* player;
@@ -38,6 +48,7 @@ private:
     void initWindow();
     void initMap();
     void initPlayer();
+    void initVariables();
 
 
 
