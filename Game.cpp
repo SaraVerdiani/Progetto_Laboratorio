@@ -15,6 +15,10 @@ Game::Game() {
 
 Game::~Game() {
 
+    delete this->map;
+    delete this->player;
+    delete this->window;
+
 }
 
 void Game::run() {
@@ -66,13 +70,13 @@ void Game::pollEvents() {
         }
 
 
-        //this->pollEventsTest(this->event);   //TESTING
+       // this->pollEventsTest(this->event);   //TESTING
     }
 
 }
-/*
 
-void Game::pollEventsTest(sf::Event &e) {
+/*
+void Game::pollEventsTest(sf::Event &e) {    // TESTING
 
         switch(e.type) {
 
@@ -88,6 +92,7 @@ void Game::pollEventsTest(sf::Event &e) {
 
 }
 */
+
 
 sf::RenderWindow * Game::getWindow() const {
 

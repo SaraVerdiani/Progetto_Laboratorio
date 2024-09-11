@@ -8,9 +8,9 @@
 const int MAP_WIDTH = 30;
 const int MAP_HEIGHT = 16;
 
-int world_map[MAP_WIDTH][MAP_HEIGHT] {
+int world_map[MAP_WIDTH][MAP_HEIGHT] {           // 0 -> il personaggio può passare
 
-
+                                                // 9 -> il personaggio non può passare
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
 {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},

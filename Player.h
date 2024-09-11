@@ -25,7 +25,7 @@ public:
     void updateAnimations();
     void move(const float dir_x, const float dir_y);
 
-    //void findNodeTest(sf::Vector2f startPos, sf::Vector2f endPos); TESTING
+    //void findNodeTest(sf::Vector2f startPos, sf::Vector2f endPos);  // TESTING
 
     float getMovementSpeed() const;
     sf::Sprite getSprite() const;

@@ -112,11 +112,11 @@ void Player::findNode(sf::RenderWindow &target) {
     if (SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_FAILED)
         cout << "Search failed\n";
 
-
+/*
 
     // TESTING
 
- /*   sf::Vector2f startPos = this->sprite.getPosition();
+    sf::Vector2f startPos = this->sprite.getPosition();
 
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
@@ -196,8 +196,7 @@ void Player::updateMovement(sf::RenderWindow &target) {
 
                 }
             }
-        } else
-            this->animState = PLAYER_ANIMATION_STATES::NOT_MOVING;
+        }
     }
 
 void Player::updateAnimations() {
@@ -271,8 +270,6 @@ void Player::move(const float dir_x, const float dir_y) {
     this->sprite.move(this->movementSpeed * dir_x, this->movementSpeed * dir_y);
 
 }
-
-
 
 
 float Player::getMovementSpeed() const {
