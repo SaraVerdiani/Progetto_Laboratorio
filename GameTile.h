@@ -8,6 +8,7 @@
 #include <string>
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "MapSearchNode.h"
 
 
 
@@ -20,14 +21,14 @@ public:
     void setUpSprite(std::string textureName);
     sf::Sprite& getSprite();
     sf::Texture getTexture() const;
-
-
+    void setCost(int cost);
 
 
 
 private:
     sf::Sprite sprite;
     sf::Texture texture;
+
 
 
 };
