@@ -8,6 +8,10 @@
 #include "stlastar.h"
 
 
+const int MAP_HEIGHT = 16;
+const int MAP_WIDTH = 30;
+
+inline int world_map[MAP_WIDTH][MAP_HEIGHT];
 
 class MapSearchNode {
 
@@ -15,6 +19,7 @@ public:
 
     int x;	 // the (x,y) positions of the node
     int y;
+
 
     MapSearchNode() { x = y = 0; }
     MapSearchNode( int px, int py ) { x=px; y=py; }
