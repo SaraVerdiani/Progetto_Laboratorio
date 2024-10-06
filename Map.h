@@ -16,7 +16,6 @@ public:
     Map();
     ~Map();
 
-    void loadMap(std::array<std::array<int, 30>, 16> arr);
     void drawMap(sf::RenderTarget* target);
     void drawTile(sf::RenderTarget &target, GameTile* tile);
 
@@ -43,7 +42,6 @@ public:
 
 
 private:
-    std::array<std::array<int, 30>, 16> map;
 
     GameTile* grassLeftCorner;
     GameTile* grassMiddleUp;

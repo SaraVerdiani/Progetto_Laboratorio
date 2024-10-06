@@ -6,7 +6,7 @@
 
 #include <array>
 
-std::array<std::array<int, 30>, 16> lvl1 = {{
+std::array<std::array<int, 30>, 16> gameMap = {{
 
 {0,1,1,1,1,1,1,11,11,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2},
 {3,4,4,4,4,4,4,11,11,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,5},
@@ -50,9 +50,6 @@ Map::Map() {
 
 
 
-    loadMap(lvl1);
-
-
 }
 
 Map::~Map() {
@@ -77,19 +74,6 @@ Map::~Map() {
 
 }
 
-void Map::loadMap(std::array<std::array<int, 30>, 16> arr) {
-
-    for(int i = 0; i < 16; i++) {
-
-        for(int j = 0; j < 30; j++) {
-
-            map[i][j] = arr[i][j];
-        }
-    }
-
-
-}
-
 void Map::drawMap(sf::RenderTarget *target) {
 
     int type = 0;
@@ -98,7 +82,7 @@ void Map::drawMap(sf::RenderTarget *target) {
 
         for (int j = 0; j < 30; j++) {
 
-            type = map[i][j];
+            type = gameMap[i][j];
 
             switch (type) {
                 case 0:
@@ -204,7 +188,7 @@ void Map::drawTile(sf::RenderTarget &target, GameTile *tile) {
 
 std::array<std::array<int, 30>, 16> Map::getMap() const {
 
-    return this->map;
+    return gameMap;
 
 }
 
