@@ -68,30 +68,10 @@ void Game::pollEvents() {
 
 
         }
-
-
-       // this->pollEventsTest(this->event);   //TESTING
     }
 
 }
 
-/*
-void Game::pollEventsTest(sf::Event &e) {    // TESTING
-
-        switch(e.type) {
-
-            case sf::Event::Closed:
-                this->window->close();
-            break;
-            case sf::Event::KeyPressed:
-                if(this->event.key.code == sf::Keyboard::Escape)
-                    this->window->close();
-            break;
-
-        }
-
-}
-*/
 
 
 sf::RenderWindow * Game::getWindow() const {

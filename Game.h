@@ -22,9 +22,7 @@ public:
     void run();
     void update();
     void render();
-    void pollEvents();
-
-    //void pollEventsTest(sf::Event& e); // TESTING
+    virtual void pollEvents();
 
     sf::RenderWindow* getWindow() const;
     int getFrameRateLimit() const;
