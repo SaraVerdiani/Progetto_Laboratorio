@@ -197,56 +197,6 @@ GameTile * Map::getGrassLeftCorner() const {
     return this->grassLeftCorner;
 }
 
-GameTile * Map::getGrassMiddleUp() const {
-
-    return this->grassMiddleUp;
-}
-
-GameTile * Map::getGrassRightCorner() const {
-
-    return this->grassRightCorner;
-}
-
-GameTile * Map::getGrassMiddleLeft() const {
-
-    return this->grassMiddleLeft;
-}
-
-GameTile * Map::getGrassCenter() const {
-
-    return this->grassCenter;
-}
-
-GameTile * Map::getGrassMiddleRight() const {
-
-    return this->grassMiddleRight;
-}
-
-GameTile * Map::getGrassLowCornerLeft() const {
-
-    return this->grassLowCornerLeft;
-}
-
-GameTile * Map::getGrassMiddleLow() const {
-
-    return this->grassMiddleLow;
-}
-
-GameTile * Map::getGrassLowCornerRight() const {
-
-    return this->grassLowCornerRight;
-}
-
-GameTile * Map::getPathMiddleUp() const {
-
-    return this->pathMiddleUp;
-}
-
-GameTile * Map::getPathMiddleLow() const {
-
-    return this->pathMiddleLow;
-}
-
 GameTile * Map::getWater() const {
 
     return this->water;
@@ -257,24 +207,5 @@ GameTile * Map::getBridge() const {
     return this->bridge;
 }
 
-GameTile * Map::getStairsLeft() const {
-
-    return this->stairsLeft;
-}
-
-GameTile * Map::getStairsRight() const {
-
-    return this->stairsRight;
-}
-
-GameTile * Map::getBrick() const {
-
-    return this->brick;
-}
-
-GameTile * Map::getBrick1() const {
-
-    return this->brick1;
-}
 
 
