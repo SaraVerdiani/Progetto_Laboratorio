@@ -17,17 +17,14 @@ public:
         MapSearchNode nodeStart;
         MapSearchNode nodeEnd;
 
-        nodeStart.x = startPos.x / 64;
-        nodeStart.y = startPos.y / 64;
+        nodeStart.setX(startPos.x / 64);
+        nodeStart.setY(startPos.y / 64);
 
 
-        nodeEnd.x = endPos.x / 64;
-        nodeEnd.y = endPos.y / 64;
+        nodeEnd.setX(endPos.x / 64);
+        nodeEnd.setY(endPos.y / 64);
 
         astarsearch.SetStartAndGoalStates( nodeStart, nodeEnd );
-
-        cout << "Start: " << nodeStart.x << " , " << nodeStart.y << endl;
-        cout << "Goal: " << nodeEnd.x << " , " << nodeEnd.y << endl;
 
         unsigned int SearchState;
         unsigned int SearchStep = 0;
@@ -66,7 +63,7 @@ public:
 
                 node->PrintNodeInfo();
 
-                sf::Vector2f nextPos(node->x * 64.0f, node->y * 64.0f);
+                sf::Vector2f nextPos(node->getX() * 64.0f, node->getY() * 64.0f);
 
                 this->path.push_back(nextPos);
 

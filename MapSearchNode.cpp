@@ -53,6 +53,26 @@ void MapSearchNode::PrintNodeInfo()
 	cout << str;
 }
 
+int MapSearchNode::getX() const {
+
+	return x;
+}
+
+int MapSearchNode::getY() const {
+
+	return y;
+}
+
+void MapSearchNode::setX(int newX) {
+
+	x = newX;
+}
+
+void MapSearchNode::setY(int newY) {
+
+	y = newY;
+}
+
 
 float MapSearchNode::GoalDistanceEstimate( MapSearchNode &nodeGoal )
 {

@@ -17,10 +17,6 @@ class MapSearchNode {
 
 public:
 
-    int x;	 // the (x,y) positions of the node
-    int y;
-
-
     MapSearchNode() { x = y = 0; }
     MapSearchNode( int px, int py ) { x=px; y=py; }
 
@@ -30,13 +26,18 @@ public:
     float GetCost( MapSearchNode &successor );
     bool IsSameState( MapSearchNode &rhs );
     size_t Hash();
-
     void PrintNodeInfo();
+    int getX() const;
+    int getY() const;
+    void setX(int newX);
+    void setY(int newY);
+
+
+private:
+    int x;
+    int y;
 
 
 
 };
-
-
-
 #endif //MAPSEARCHNODE_H

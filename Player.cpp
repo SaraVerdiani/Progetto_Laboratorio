@@ -34,8 +34,8 @@ void Player::findNode(sf::RenderWindow &target) {
     MapSearchNode nodeStart;
     MapSearchNode nodeEnd;
 
-    nodeStart.x = this->sprite.getPosition().x / 64 ;
-    nodeStart.y = this->sprite.getPosition().y / 64;
+    nodeStart.setX(this->sprite.getPosition().x / 64);
+    nodeStart.setY(this->sprite.getPosition().y / 64);
 
     std::cout << this->sprite.getPosition().x << " " << this->sprite.getPosition().y << std::endl;
 
@@ -46,16 +46,13 @@ void Player::findNode(sf::RenderWindow &target) {
         sf::Vector2f worldPos = target.mapPixelToCoords(pixelPos);
 
 
-        nodeEnd.x = worldPos.x / 64;
-        nodeEnd.y = worldPos.y / 64;
+        nodeEnd.setX(worldPos.x / 64);
+        nodeEnd.setY(worldPos.y / 64);
 
 
     }
 
     astarsearch.SetStartAndGoalStates( nodeStart, nodeEnd );
-
-    cout << "Start: " << nodeStart.x << " , " << nodeStart.y << endl;
-    cout << "Goal: " << nodeEnd.x << " , " << nodeEnd.y << endl;
 
     unsigned int SearchState;
     unsigned int SearchStep = 0;
@@ -94,7 +91,7 @@ void Player::findNode(sf::RenderWindow &target) {
 
             node->PrintNodeInfo();
 
-            sf::Vector2f nextPos(node->x * 64.0f, node->y * 64.0f);
+            sf::Vector2f nextPos(node->getX() * 64.f, node->getY() * 64.0f);
 
             this->path.push_back(nextPos);
 
