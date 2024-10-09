@@ -7,8 +7,7 @@
 
                                                 // 9 -> il personaggio non può passare
 
-int GetMap( int x, int y )
-{
+int getMap( int x, int y ) {
 	if( x < 0 ||
 	    x >= MAP_WIDTH ||
 		 y < 0 ||
@@ -21,8 +20,7 @@ int GetMap( int x, int y )
 	return world_map[x][y];
 }
 
-bool MapSearchNode::IsSameState( MapSearchNode &rhs )
-{
+bool MapSearchNode::isSameState( MapSearchNode &rhs ) {
 
 
 	if( (x == rhs.x) &&
@@ -37,15 +35,13 @@ bool MapSearchNode::IsSameState( MapSearchNode &rhs )
 
 }
 
-size_t MapSearchNode::Hash()
-{
+size_t MapSearchNode::aStarHash() {
 	size_t h1 = hash<float>{}(x);
 	size_t h2 = hash<float>{}(y);
 	return h1 ^ (h2 << 1);
 }
 
-void MapSearchNode::PrintNodeInfo()
-{
+void MapSearchNode::printNodeInfo() {
   const int strSize = 100;
 	char str[strSize];
 	snprintf( str, strSize, "Node position : (%d,%d)\n", x,y );
@@ -74,13 +70,22 @@ void MapSearchNode::setY(int newY) {
 }
 
 
-float MapSearchNode::GoalDistanceEstimate( MapSearchNode &nodeGoal )
-{
+MapSearchNode::MapSearchNode() {
+
+	x = y = 0;
+}
+
+MapSearchNode::MapSearchNode(int px, int py) {
+
+	 x=px;
+	 y=py;
+}
+
+float MapSearchNode::goalDistanceEstimate( MapSearchNode &nodeGoal ) {
 	return abs(x - nodeGoal.x) + abs(y - nodeGoal.y);
 }
 
-bool MapSearchNode::IsGoal( MapSearchNode &nodeGoal )
-{
+bool MapSearchNode::isGoal( MapSearchNode &nodeGoal ) {
 
 	if( (x == nodeGoal.x) &&
 		(y == nodeGoal.y) )
@@ -91,14 +96,12 @@ bool MapSearchNode::IsGoal( MapSearchNode &nodeGoal )
 	return false;
 }
 
-bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node )
-{
+bool MapSearchNode::getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node ) {
 
 	int parent_x = -1;
 	int parent_y = -1;
 
-	if( parent_node )
-	{
+	if( parent_node ) {
 		parent_x = parent_node->x;
 		parent_y = parent_node->y;
 	}
@@ -107,35 +110,31 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 	MapSearchNode NewNode;
 
 
-	if( (GetMap( x-1, y ) < 9)
+	if( (getMap( x-1, y ) < 9)
 		&& !((parent_x == x-1) && (parent_y == y))
-	  )
-	{
+	  ) {
 		NewNode = MapSearchNode( x-1, y );
 		astarsearch->AddSuccessor( NewNode );
 	}
 
-	if( (GetMap( x, y-1 ) < 9)
+	if( (getMap( x, y-1 ) < 9)
 		&& !((parent_x == x) && (parent_y == y-1))
-	  )
-	{
+	  ) {
 		NewNode = MapSearchNode( x, y-1 );
 		astarsearch->AddSuccessor( NewNode );
 	}
 
-	if( (GetMap( x+1, y ) < 9)
+	if( (getMap( x+1, y ) < 9)
 		&& !((parent_x == x+1) && (parent_y == y))
-	  )
-	{
+	  ) {
 		NewNode = MapSearchNode( x+1, y );
 		astarsearch->AddSuccessor( NewNode );
 	}
 
 
-	if( (GetMap( x, y+1 ) < 9)
+	if( (getMap( x, y+1 ) < 9)
 		&& !((parent_x == x) && (parent_y == y+1))
-		)
-	{
+		) {
 		NewNode = MapSearchNode( x, y+1 );
 		astarsearch->AddSuccessor( NewNode );
 	}
@@ -143,9 +142,9 @@ bool MapSearchNode::GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 	return true;
 }
 
-float MapSearchNode::GetCost( MapSearchNode &successor )
-{
-	return (float) GetMap( x, y );
+float MapSearchNode::getCost( MapSearchNode &successor ) {
+
+	return (float) getMap( x, y );
 
 }
 

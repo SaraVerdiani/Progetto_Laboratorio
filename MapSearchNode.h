@@ -17,16 +17,16 @@ class MapSearchNode {
 
 public:
 
-    MapSearchNode() { x = y = 0; }
-    MapSearchNode( int px, int py ) { x=px; y=py; }
+    MapSearchNode();
+    MapSearchNode( int px, int py );
 
-    float GoalDistanceEstimate( MapSearchNode &nodeGoal );
-    bool IsGoal( MapSearchNode &nodeGoal );
-    bool GetSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node );
-    float GetCost( MapSearchNode &successor );
-    bool IsSameState( MapSearchNode &rhs );
-    size_t Hash();
-    void PrintNodeInfo();
+    float goalDistanceEstimate( MapSearchNode &nodeGoal );
+    bool isGoal( MapSearchNode &nodeGoal );
+    bool getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node );
+    float getCost( MapSearchNode &successor );
+    bool isSameState( MapSearchNode &rhs );
+    size_t aStarHash();
+    void printNodeInfo();
     int getX() const;
     int getY() const;
     void setX(int newX);

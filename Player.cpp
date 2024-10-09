@@ -79,7 +79,7 @@ void Player::findNode(sf::RenderWindow &target) {
 
         int steps = 0;
 
-        node->PrintNodeInfo();
+        node->printNodeInfo();
         for( ;; )
         {
             node = astarsearch.GetSolutionNext();
@@ -89,7 +89,7 @@ void Player::findNode(sf::RenderWindow &target) {
                 break;
             }
 
-            node->PrintNodeInfo();
+            node->printNodeInfo();
 
             sf::Vector2f nextPos(node->getX() * 64.f, node->getY() * 64.0f);
 

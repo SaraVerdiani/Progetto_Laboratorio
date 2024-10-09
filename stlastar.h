@@ -93,12 +93,12 @@ public: // data
 				g( 0.0f ),
 				h( 0.0f ),
 				f( 0.0f )
-			{			
+			{
 			}
 
 			bool operator==(const Node& otherNode) const
 			{
-				return this->m_UserState.IsSameState(otherNode->m_UserState);
+				return this->m_UserState.isSameState(otherNode->m_UserState);
 			}
 
 			UserState m_UserState;
@@ -169,7 +169,7 @@ public: // methods
 		// The user only needs fill out the state information
 
 		m_Start->g = 0; 
-		m_Start->h = m_Start->m_UserState.GoalDistanceEstimate( m_Goal->m_UserState );
+		m_Start->h = m_Start->m_UserState.goalDistanceEstimate( m_Goal->m_UserState );
 		m_Start->f = m_Start->g + m_Start->h;
 		m_Start->parent = 0;
 
@@ -218,7 +218,7 @@ public: // methods
 		m_OpenList.pop_back();
 
 		// Check for the goal, once we pop that we're done
-		if( n->m_UserState.IsGoal( m_Goal->m_UserState ) )
+		if( n->m_UserState.isGoal( m_Goal->m_UserState ) )
 		{
 			// The user is going to use the Goal Node he passed in 
 			// so copy the parent pointer of n 
@@ -227,7 +227,7 @@ public: // methods
 
 			// A special case is that the goal was passed in as the start state
 			// so handle that here
-			if( false == n->m_UserState.IsSameState( m_Start->m_UserState ) )
+			if( false == n->m_UserState.isSameState( m_Start->m_UserState ) )
 			{
 				FreeNode( n );
 
@@ -265,7 +265,7 @@ public: // methods
 
 			// User provides this functions and uses AddSuccessor to add each successor of
 			// node 'n' to m_Successors
-			bool ret = n->m_UserState.GetSuccessors( this, n->parent ? &n->parent->m_UserState : NULL ); 
+			bool ret = n->m_UserState.getSuccessors( this, n->parent ? &n->parent->m_UserState : NULL );
 
 			if( !ret )
 			{
@@ -292,7 +292,7 @@ public: // methods
 			for( typename vector< Node * >::iterator successor = m_Successors.begin(); successor != m_Successors.end(); successor ++ )
 			{
 				// 	The g value for this successor ...
-				float newg = n->g + n->m_UserState.GetCost( (*successor)->m_UserState );
+				float newg = n->g + n->m_UserState.getCost( (*successor)->m_UserState );
 
 				// Now we need to find whether the node is on the open or closed lists
 				// If it is but the node that is already on them is better (lower g)
@@ -304,7 +304,7 @@ public: // methods
 
 				for( openlist_result = m_OpenList.begin(); openlist_result != m_OpenList.end(); openlist_result ++ )
 				{
-					if( (*openlist_result)->m_UserState.IsSameState( (*successor)->m_UserState ) )
+					if( (*openlist_result)->m_UserState.isSameState( (*successor)->m_UserState ) )
 					{
 						break;					
 					}
@@ -346,7 +346,7 @@ public: // methods
 
 				(*successor)->parent = n;
 				(*successor)->g = newg;
-				(*successor)->h = (*successor)->m_UserState.GoalDistanceEstimate( m_Goal->m_UserState );
+				(*successor)->h = (*successor)->m_UserState.goalDistanceEstimate( m_Goal->m_UserState );
 				(*successor)->f = (*successor)->g + (*successor)->h;
 
 				// Successor in closed list
@@ -780,12 +780,12 @@ private: // data
 	// Closed is an unordered_set
 	struct NodeHash {
 		size_t operator() (Node* const& n) const {
-			return n->m_UserState.Hash();
+			return n->m_UserState.aStarHash();
 		}
 	};
 	struct NodeEqual {
 		bool operator()(Node* a, Node* b) const {
-			return a->m_UserState.IsSameState(b->m_UserState);
+			return a->m_UserState.isSameState(b->m_UserState);
   	}
 	};
 	unordered_set<Node*, NodeHash, NodeEqual> m_ClosedList;
