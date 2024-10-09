@@ -20,17 +20,15 @@ public:
 
 
     void render(sf::RenderTarget& target);
-    void findNode(sf::RenderWindow& target);
+    virtual void findNode(sf::RenderWindow& target);
     void updateMovement(sf::RenderWindow& target);
     void updateAnimations();
     void move(const float dir_x, const float dir_y);
-
-    //void findNodeTest(sf::Vector2f startPos, sf::Vector2f endPos);  // TESTING
-
     float getMovementSpeed() const;
     sf::Sprite getSprite() const;
     sf::Texture getTexture() const;
     sf::Vector2f getPosition() const;
+    void setCurrentNode(int node);
     sf::IntRect getCurrentFrame() const;
     void setMovementSpeed(const float movementSpeed);
     void setPosition(const float x, const float y);

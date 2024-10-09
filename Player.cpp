@@ -112,24 +112,6 @@ void Player::findNode(sf::RenderWindow &target) {
     if (SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_FAILED)
         cout << "Search failed\n";
 
-/*
-
-    // TESTING
-
-    sf::Vector2f startPos = this->sprite.getPosition();
-
-    if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
-
-        sf::Vector2i pixelPos = sf::Mouse::getPosition(target);
-        sf::Vector2f endPos = target.mapPixelToCoords(pixelPos);
-
-        this->findNodeTest(startPos, endPos);
-
-    }
-    */
-
-
-
 
 }
 
@@ -158,11 +140,6 @@ void Player::updateMovement(sf::RenderWindow &target) {
 
             sf::Vector2f direction = targetPosition - currentPos;
             float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
-
-           /* std::cout << "Target pos: " << targetPosition.x << ", " << targetPosition.y << std::endl;
-            std::cout << "Current pos: " << currentPos.x << ", " << currentPos.y << std::endl;
-            std::cout << "Length: " << length << std::endl; */
-
 
 
             if (length > 1.5f) {
@@ -292,6 +269,11 @@ sf::Vector2f Player::getPosition() const {
     return this->sprite.getPosition();
 }
 
+void Player::setCurrentNode(int node) {
+
+    currentNode = node;
+}
+
 sf::IntRect Player::getCurrentFrame() const {
 
     return this->currentFrame;
@@ -356,6 +338,8 @@ void Player::initSprite() {
 void Player::initVariables() {
 
     this->movementSpeed = 1.5f;
+    this->currentNode = 0;
+    this->animState = NOT_MOVING;
 
 }
 
@@ -364,85 +348,3 @@ void Player::initAnimations() {
     this->animationTimer.restart();
 
 }
-
-
- // TESTING
-
-/*
-void Player::findNodeTest(sf::Vector2f startPos, sf::Vector2f endPos) {
-
-    AStarSearch<MapSearchNode> astarsearch;
-
-    MapSearchNode nodeStart;
-    MapSearchNode nodeEnd;
-
-    nodeStart.x = startPos.x / 64 ;
-    nodeStart.y = startPos.y / 64;
-
-
-    nodeEnd.x = endPos.x / 64;
-    nodeEnd.y = endPos.y / 64;
-
-    astarsearch.SetStartAndGoalStates( nodeStart, nodeEnd );
-
-    cout << "Start: " << nodeStart.x << " , " << nodeStart.y << endl;
-    cout << "Goal: " << nodeEnd.x << " , " << nodeEnd.y << endl;
-
-    unsigned int SearchState;
-    unsigned int SearchStep = 0;
-
-    do {
-
-        SearchState = astarsearch.SearchStep();
-        SearchStep++;
-
-        cout << "Steps: " << SearchStep << endl;
-
-
-    } while(SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SEARCHING);
-
-    if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED ) {
-        cout << "Search found goal state\n";
-
-        MapSearchNode *node = astarsearch.GetSolutionStart();
-
-        this->path.clear();
-        this->currentNode = 0;
-
-        this->path.push_back(startPos);
-
-        int steps = 0;
-
-        node->PrintNodeInfo();
-        for( ;; )
-        {
-            node = astarsearch.GetSolutionNext();
-
-            if( !node )
-            {
-                break;
-            }
-
-            node->PrintNodeInfo();
-
-            sf::Vector2f nextPos(node->x * 64.0f, node->y * 64.0f);
-
-            this->path.push_back(nextPos);
-
-            steps ++;
-
-        };
-
-        cout << "Solution steps " << steps << endl;
-
-
-        astarsearch.FreeSolutionNodes();
-
-    }
-
-    if (SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_FAILED)
-        cout << "Search failed\n";
-
-
-}
-*/
