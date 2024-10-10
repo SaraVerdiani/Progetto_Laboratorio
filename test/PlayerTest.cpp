@@ -1,7 +1,6 @@
 #include "gtest/gtest.h"
 #include "../Player.h"
 
-
 TEST(Player, Constructor) {
 
     Player p;
@@ -11,7 +10,6 @@ TEST(Player, Constructor) {
     ASSERT_EQ(p.getPosition().y, 300.f);
     ASSERT_EQ(p.getCurrentFrame(), sf::IntRect(32.f, 72.f, 32.f, 36.f));
     ASSERT_EQ(p.getSprite().getScale(), sf::Vector2f(2.f,2.f));
-
 }
 
 

@@ -9,26 +9,19 @@
 #include "GameTile.h"
 #include <array>
 
-
 class Map {
 
 public:
     Map();
     ~Map();
-
     void drawMap(sf::RenderTarget* target);
     void drawTile(sf::RenderTarget &target, GameTile* tile);
-
     std::array<std::array<int, 30>, 16> getMap() const;
-
     GameTile* getGrassLeftCorner() const;
     GameTile* getWater() const;
     GameTile* getBridge() const;
 
-
-
 private:
-
     GameTile* grassLeftCorner;
     GameTile* grassMiddleUp;
     GameTile* grassRightCorner;
@@ -46,11 +39,6 @@ private:
     GameTile* stairsRight;
     GameTile* brick;
     GameTile* brick1;
-
-
-
 };
-
-
 
 #endif //MAP_H

@@ -10,48 +10,33 @@
 #include "Map.h"
 #include "Player.h"
 
-
-
 class Game {
 
 public:
     Game();
     ~Game();
-
-
     void run();
     void update();
     void render();
     virtual void pollEvents();
-
     sf::RenderWindow* getWindow() const;
     int getFrameRateLimit() const;
     bool getVerticalSync() const;
     Map* getMap() const;
     Player* getPlayer() const;
 
-
-
-
 private:
     sf::RenderWindow* window;
     sf::Event event;
     int frameRateLimit;
     bool isVerticalSyncEnabled;
-
     Map* map;
     Player* player;
-
-
     void initWindow();
     void initMap();
     void initPlayer();
     void initVariables();
 
-
-
 };
-
-
 
 #endif //GAME_H

@@ -10,16 +10,13 @@
 
 const int MAP_HEIGHT = 16;
 const int MAP_WIDTH = 30;
-
 inline int world_map[MAP_WIDTH][MAP_HEIGHT];
 
 class MapSearchNode {
 
 public:
-
     MapSearchNode();
     MapSearchNode( int px, int py );
-
     float goalDistanceEstimate( MapSearchNode &nodeGoal );
     bool isGoal( MapSearchNode &nodeGoal );
     bool getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node );
@@ -32,12 +29,9 @@ public:
     void setX(int newX);
     void setY(int newY);
 
-
 private:
     int x;
     int y;
-
-
-
 };
+
 #endif //MAPSEARCHNODE_H

@@ -10,5 +10,4 @@ TEST(Game, Constructor) {
     ASSERT_FALSE(g.getVerticalSync());
     ASSERT_NE(g.getMap(), nullptr);
     ASSERT_NE(g.getPlayer(), nullptr);
-
 }

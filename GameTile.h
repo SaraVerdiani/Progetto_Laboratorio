@@ -10,30 +10,21 @@
 #include <iostream>
 #include "MapSearchNode.h"
 
-
-
 class GameTile {
 
 public:
     GameTile(const std::string &textureName,int rectLeft, int rectTop , int rectWidth, int rectHeight, sf::Vector2f scale);
     ~GameTile();
-
     void setUpSprite(std::string textureName);
     sf::Sprite getSprite() const;
     sf::Texture getTexture() const;
     void setCost(int cost);
     void setSpritePosition(float x, float y);
 
-
-
 private:
     sf::Sprite sprite;
     sf::Texture texture;
 
-
-
 };
-
-
 
 #endif //GAMETILE_H

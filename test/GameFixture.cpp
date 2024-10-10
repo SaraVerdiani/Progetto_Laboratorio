@@ -2,8 +2,8 @@
 #include "../Game.h"
 
 class GameFunctionTest : public Game {
-public:
 
+public:
     GameFunctionTest() {
 
         window.create(sf::VideoMode(1920,1024),"TestWindow");
@@ -20,7 +20,6 @@ public:
 
         handleEvent(closeEvent);
         handleEvent(escapeEvent);
-
     }
 
     void handleEvent(const sf::Event& event) {
@@ -42,11 +41,9 @@ public:
 class GameFixture : public ::testing::Test {
 
 public:
-
     virtual void SetUp() {
 
         gameTest = new GameFunctionTest();
-
     }
 
 protected:
@@ -56,9 +53,7 @@ protected:
 
 TEST_F(GameFixture, TestPollEvents) {
 
-
     gameTest->pollEvents();
-
     ASSERT_FALSE(gameTest->window.isOpen());
 
 

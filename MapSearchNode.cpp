@@ -3,9 +3,6 @@
 //
 
 #include "MapSearchNode.h"
-                                                 // 0 -> il personaggio può passare
-
-                                                // 9 -> il personaggio non può passare
 
 int getMap( int x, int y ) {
 	if( x < 0 ||
@@ -22,7 +19,6 @@ int getMap( int x, int y ) {
 
 bool MapSearchNode::isSameState( MapSearchNode &rhs ) {
 
-
 	if( (x == rhs.x) &&
 		(y == rhs.y) )
 	{
@@ -32,7 +28,6 @@ bool MapSearchNode::isSameState( MapSearchNode &rhs ) {
 	{
 		return false;
 	}
-
 }
 
 size_t MapSearchNode::aStarHash() {
@@ -77,11 +72,12 @@ MapSearchNode::MapSearchNode() {
 
 MapSearchNode::MapSearchNode(int px, int py) {
 
-	 x=px;
-	 y=py;
+	x=px;
+	y=py;
 }
 
 float MapSearchNode::goalDistanceEstimate( MapSearchNode &nodeGoal ) {
+
 	return abs(x - nodeGoal.x) + abs(y - nodeGoal.y);
 }
 
@@ -106,9 +102,7 @@ bool MapSearchNode::getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 		parent_y = parent_node->y;
 	}
 
-
 	MapSearchNode NewNode;
-
 
 	if( (getMap( x-1, y ) < 9)
 		&& !((parent_x == x-1) && (parent_y == y))

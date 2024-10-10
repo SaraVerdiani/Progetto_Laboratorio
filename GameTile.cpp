@@ -4,17 +4,13 @@
 
 #include "GameTile.h"
 
-
 GameTile::GameTile(const std::string &textureName, int rectLeft, int rectTop , int rectWidth, int rectHeight, sf::Vector2f scale) {
-
 
     sprite.setTextureRect(sf::IntRect(rectLeft, rectTop, rectWidth, rectHeight));
     sprite.setScale(scale);
-
-
     this->setUpSprite(textureName);
-}
 
+}
 
 GameTile::~GameTile() {
 }
@@ -22,10 +18,8 @@ GameTile::~GameTile() {
 void GameTile::setUpSprite(std::string textureName) {
 
     if(!texture.loadFromFile(textureName)) {
-
         std::cout << "ERROR loading texture " << textureName << std::endl;
     }
-
     sprite.setTexture(texture);
 
 }
@@ -33,7 +27,6 @@ void GameTile::setUpSprite(std::string textureName) {
 sf::Sprite GameTile::getSprite() const {
 
     return this->sprite;
-
 }
 
 sf::Texture  GameTile::getTexture() const {
@@ -50,27 +43,18 @@ void GameTile::setCost(int cost) {
         if (j < MAP_HEIGHT) {
             world_map[i][j] = cost;
             i++;
-
-
             std::cout << "Setting cost at (" << i  << ", " << j - 1 << ") to: " << cost << std::endl;
-
             if (i >= MAP_WIDTH) {
                 i = 0;
                 j++;
-
             }
         }
     }
-
-
-
-
 }
 
 void GameTile::setSpritePosition(float x, float y) {
 
     sprite.setPosition(x, y);
-
 }
 
 

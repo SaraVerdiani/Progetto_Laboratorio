@@ -14,11 +14,10 @@
 enum PLAYER_ANIMATION_STATES {NOT_MOVING = 0, MOVING_LEFT, MOVING_RIGHT, MOVING_UP, MOVING_DOWN};
 
 class Player {
+
 public:
     Player();
     ~Player();
-
-
     void render(sf::RenderTarget& target);
     virtual void findNode(sf::RenderWindow& target);
     void updateMovement(sf::RenderWindow& target);
@@ -38,30 +37,20 @@ public:
     void setAnimState(const short animState);
     sf::Clock getAnimationTimer() const;
 
-
 private:
     sf::Sprite sprite;
     sf::Texture texture;
-
     float movementSpeed;
-
     sf::IntRect currentFrame;
     sf::Clock animationTimer;
     short animState;
-
     std::vector<sf::Vector2f> path;
     int currentNode;
-
     void initTexture();
     void initSprite();
     void initVariables();
     void initAnimations();
 
-
-
-
 };
-
-
 
 #endif //PLAYER_H

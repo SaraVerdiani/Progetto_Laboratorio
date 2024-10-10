@@ -10,8 +10,6 @@ Player::Player() {
     this->initSprite();
     this->initVariables();
     this->initAnimations();
-
-
 }
 
 Player::~Player() {
@@ -23,7 +21,6 @@ Player::~Player() {
 void Player::render(sf::RenderTarget &target) {
 
     target.draw(this->sprite);
-
 }
 
 
@@ -39,16 +36,13 @@ void Player::findNode(sf::RenderWindow &target) {
 
     std::cout << this->sprite.getPosition().x << " " << this->sprite.getPosition().y << std::endl;
 
-
     if(sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
 
         sf::Vector2i pixelPos = sf::Mouse::getPosition(target);
         sf::Vector2f worldPos = target.mapPixelToCoords(pixelPos);
 
-
         nodeEnd.setX(worldPos.x / 64);
         nodeEnd.setY(worldPos.y / 64);
-
 
     }
 
@@ -64,22 +58,18 @@ void Player::findNode(sf::RenderWindow &target) {
 
         cout << "Steps: " << SearchStep << endl;
 
-
     } while(SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SEARCHING);
 
     if( SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_SUCCEEDED ) {
         cout << "Search found goal state\n";
 
         MapSearchNode *node = astarsearch.GetSolutionStart();
-
         this->path.clear();
         this->currentNode = 0;
-
         this->path.push_back(this->sprite.getPosition());
-
         int steps = 0;
-
         node->printNodeInfo();
+
         for( ;; )
         {
             node = astarsearch.GetSolutionNext();
@@ -90,30 +80,22 @@ void Player::findNode(sf::RenderWindow &target) {
             }
 
             node->printNodeInfo();
-
             sf::Vector2f nextPos(node->getX() * 64.f, node->getY() * 64.0f);
-
             this->path.push_back(nextPos);
-
             steps ++;
 
         };
 
         cout << "Solution steps " << steps << endl;
-
-
         astarsearch.FreeSolutionNodes();
-
     }
 
     if (SearchState == AStarSearch<MapSearchNode>::SEARCH_STATE_FAILED)
         cout << "Search failed\n";
 
-
 }
 
 void Player::updateMovement(sf::RenderWindow &target) {
-
 
     static bool mouseWasPressed = false;
 
@@ -123,10 +105,10 @@ void Player::updateMovement(sf::RenderWindow &target) {
 
             this->findNode(target);
             mouseWasPressed = true;
-
         }
 
     } else {
+
         mouseWasPressed = false;
     }
 
@@ -134,10 +116,8 @@ void Player::updateMovement(sf::RenderWindow &target) {
 
             sf::Vector2f currentPos = this->sprite.getPosition();
             sf::Vector2f targetPosition = path[currentNode];
-
             sf::Vector2f direction = targetPosition - currentPos;
             float length = std::sqrt(direction.x * direction.x + direction.y * direction.y);
-
 
             if (length > 1.5f) {
 
@@ -151,7 +131,6 @@ void Player::updateMovement(sf::RenderWindow &target) {
                         this->animState = PLAYER_ANIMATION_STATES::MOVING_LEFT;
                     }
                 } else {
-
                     if (direction.y > 0) {
                         this->animState = PLAYER_ANIMATION_STATES::MOVING_DOWN;
                     } else {
@@ -160,14 +139,12 @@ void Player::updateMovement(sf::RenderWindow &target) {
                 }
 
             } else {
-
                 this->sprite.setPosition(targetPosition);
                 currentNode++;
 
                 if (currentNode >= path.size()) {
 
                     this->animState = PLAYER_ANIMATION_STATES::NOT_MOVING;
-
                 }
             }
         }
@@ -202,8 +179,6 @@ void Player::updateAnimations() {
 
             this->animationTimer.restart();
             this->sprite.setTextureRect(this->currentFrame);
-
-
         }
     }
 
@@ -242,7 +217,6 @@ void Player::updateAnimations() {
 void Player::move(const float dir_x, const float dir_y) {
 
     this->sprite.move(this->movementSpeed * dir_x, this->movementSpeed * dir_y);
-
 }
 
 
@@ -294,7 +268,6 @@ std::vector<sf::Vector2f> Player::getPath() const {
 void Player::setPath(const std::vector<sf::Vector2f> &path) {
 
     this->path = path;
-
 }
 
 short Player::getAnimState() const {
@@ -319,7 +292,6 @@ void Player::initTexture() {
 
         std::cout << "ERROR: COULD NOT LOAD PLAYER TEXTURE" << std::endl;
     }
-
 }
 
 void Player::initSprite() {
@@ -329,7 +301,6 @@ void Player::initSprite() {
     this->currentFrame = sf::IntRect(32.f, 72.f, 32.f, 36.f);
     this->sprite.setTextureRect(this->currentFrame);  //!
     this->sprite.setScale(2.f, 2.f);
-
 }
 
 void Player::initVariables() {
@@ -337,11 +308,9 @@ void Player::initVariables() {
     this->movementSpeed = 1.5f;
     this->currentNode = 0;
     this->animState = NOT_MOVING;
-
 }
 
 void Player::initAnimations() {
 
     this->animationTimer.restart();
-
 }

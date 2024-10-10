@@ -3,7 +3,6 @@
 //
 
 #include "Map.h"
-
 #include <array>
 
 std::array<std::array<int, 30>, 16> gameMap = {{
@@ -29,7 +28,6 @@ std::array<std::array<int, 30>, 16> gameMap = {{
 
 
 Map::Map() {
-
     grassLeftCorner = new GameTile("assets/textures/map.png",0.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f));
     grassMiddleUp = new GameTile("assets/textures/map.png",32.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f));
     grassRightCorner = new GameTile("assets/textures/map.png",64.f,32.f,32.f,32.f, sf::Vector2f(2.f,2.f));
@@ -47,13 +45,9 @@ Map::Map() {
     stairsRight = new GameTile("assets/textures/map.png",384.f,192.f,32.f,32.f, sf::Vector2f(2.f,2.f));
     brick = new GameTile("assets/textures/map.png",128.f,128.f,32.f,32.f, sf::Vector2f(2.f,2.f));
     brick1 = new GameTile("assets/textures/map.png",160.f,96.f,32.f,32.f, sf::Vector2f(2.f,2.f));
-
-
-
 }
 
 Map::~Map() {
-
     delete grassLeftCorner;
     delete grassMiddleUp;
     delete grassRightCorner;
@@ -81,9 +75,7 @@ void Map::drawMap(sf::RenderTarget *target) {
     for (int i = 0; i < 16; i++) {
 
         for (int j = 0; j < 30; j++) {
-
             type = gameMap[i][j];
-
             switch (type) {
                 case 0:
                     grassLeftCorner->setSpritePosition(j * 64.f, i * 64.f);
@@ -170,24 +162,19 @@ void Map::drawMap(sf::RenderTarget *target) {
                 brick1->setCost(9);
                 drawTile(*target, brick1);
                 break;
-
             }
         }
     }
-
-
 }
 
 void Map::drawTile(sf::RenderTarget &target, GameTile *tile) {
 
     target.draw(tile->getSprite());
-
 }
 
 std::array<std::array<int, 30>, 16> Map::getMap() const {
 
     return gameMap;
-
 }
 
 GameTile * Map::getGrassLeftCorner() const {
