@@ -17,7 +17,7 @@ public:
     ~Game();
     void run();
     void update();
-    void render();
+    void render() const;
     virtual void pollEvents();
     sf::RenderWindow* getWindow() const;
     int getFrameRateLimit() const;

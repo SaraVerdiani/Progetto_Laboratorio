@@ -18,7 +18,7 @@ class Player {
 public:
     Player();
     ~Player();
-    void render(sf::RenderTarget& target);
+    void render(sf::RenderTarget& target) const;
     virtual void findNode(sf::RenderWindow& target);
     void updateMovement(sf::RenderWindow& target);
     void updateAnimations();

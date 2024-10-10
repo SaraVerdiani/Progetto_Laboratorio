@@ -18,7 +18,7 @@ Player::~Player() {
 
 
 
-void Player::render(sf::RenderTarget &target) {
+void Player::render(sf::RenderTarget &target) const {
 
     target.draw(this->sprite);
 }

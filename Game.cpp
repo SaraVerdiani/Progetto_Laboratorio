@@ -34,7 +34,7 @@ void Game::update() {
     this->player->updateAnimations();
 }
 
-void Game::render() {
+void Game::render() const {
 
     this->window->clear();
     this->map->drawMap(this->window);

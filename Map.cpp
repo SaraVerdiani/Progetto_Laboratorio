@@ -68,7 +68,7 @@ Map::~Map() {
 
 }
 
-void Map::drawMap(sf::RenderTarget *target) {
+void Map::drawMap(sf::RenderTarget *target) const {
 
     int type = 0;
 
@@ -167,7 +167,7 @@ void Map::drawMap(sf::RenderTarget *target) {
     }
 }
 
-void Map::drawTile(sf::RenderTarget &target, GameTile *tile) {
+void Map::drawTile(sf::RenderTarget &target, GameTile *tile) const {
 
     target.draw(tile->getSprite());
 }

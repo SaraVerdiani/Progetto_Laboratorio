@@ -14,8 +14,8 @@ class Map {
 public:
     Map();
     ~Map();
-    void drawMap(sf::RenderTarget* target);
-    void drawTile(sf::RenderTarget &target, GameTile* tile);
+    void drawMap(sf::RenderTarget* target) const;
+    void drawTile(sf::RenderTarget &target, GameTile* tile) const;
     std::array<std::array<int, 30>, 16> getMap() const;
     GameTile* getGrassLeftCorner() const;
     GameTile* getWater() const;

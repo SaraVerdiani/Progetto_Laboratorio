@@ -17,7 +17,7 @@ int getMap( int x, int y ) {
 	return world_map[x][y];
 }
 
-bool MapSearchNode::isSameState( MapSearchNode &rhs ) {
+bool MapSearchNode::isSameState( MapSearchNode &rhs ) const {
 
 	if( (x == rhs.x) &&
 		(y == rhs.y) )
@@ -36,7 +36,7 @@ size_t MapSearchNode::aStarHash() {
 	return h1 ^ (h2 << 1);
 }
 
-void MapSearchNode::printNodeInfo() {
+void MapSearchNode::printNodeInfo() const {
   const int strSize = 100;
 	char str[strSize];
 	snprintf( str, strSize, "Node position : (%d,%d)\n", x,y );
@@ -76,12 +76,12 @@ MapSearchNode::MapSearchNode(int px, int py) {
 	y=py;
 }
 
-float MapSearchNode::goalDistanceEstimate( MapSearchNode &nodeGoal ) {
+float MapSearchNode::goalDistanceEstimate( MapSearchNode &nodeGoal ) const{
 
 	return abs(x - nodeGoal.x) + abs(y - nodeGoal.y);
 }
 
-bool MapSearchNode::isGoal( MapSearchNode &nodeGoal ) {
+bool MapSearchNode::isGoal( MapSearchNode &nodeGoal ) const {
 
 	if( (x == nodeGoal.x) &&
 		(y == nodeGoal.y) )
@@ -125,7 +125,6 @@ bool MapSearchNode::getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 		astarsearch->AddSuccessor( NewNode );
 	}
 
-
 	if( (getMap( x, y+1 ) < 9)
 		&& !((parent_x == x) && (parent_y == y+1))
 		) {
@@ -136,9 +135,8 @@ bool MapSearchNode::getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 	return true;
 }
 
-float MapSearchNode::getCost( MapSearchNode &successor ) {
+float MapSearchNode::getCost( MapSearchNode &successor ) const {
 
 	return (float) getMap( x, y );
-
 }
 
