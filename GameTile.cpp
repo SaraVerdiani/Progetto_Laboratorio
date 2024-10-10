@@ -7,12 +7,12 @@
 
 GameTile::GameTile(const std::string &textureName, int rectLeft, int rectTop , int rectWidth, int rectHeight, sf::Vector2f scale) {
 
-    sprite.setTextureRect(sf::IntRect(rectLeft,rectTop, rectWidth, rectHeight));
+
+    sprite.setTextureRect(sf::IntRect(rectLeft, rectTop, rectWidth, rectHeight));
     sprite.setScale(scale);
 
 
     this->setUpSprite(textureName);
-
 }
 
 
@@ -27,11 +27,10 @@ void GameTile::setUpSprite(std::string textureName) {
     }
 
     sprite.setTexture(texture);
-    //sprite.setScale(3.f,3.f);
 
 }
 
-sf::Sprite& GameTile::getSprite() {
+sf::Sprite GameTile::getSprite() const {
 
     return this->sprite;
 
@@ -65,6 +64,12 @@ void GameTile::setCost(int cost) {
 
 
 
+
+}
+
+void GameTile::setSpritePosition(float x, float y) {
+
+    sprite.setPosition(x, y);
 
 }
 

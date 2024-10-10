@@ -86,87 +86,87 @@ void Map::drawMap(sf::RenderTarget *target) {
 
             switch (type) {
                 case 0:
-                    grassLeftCorner->getSprite().setPosition(j * 64.f, i * 64.f);
+                    grassLeftCorner->setSpritePosition(j * 64.f, i * 64.f);
                 grassLeftCorner->setCost(0);
                 drawTile(*target, grassLeftCorner);
                 break;
                 case 1:
-                    grassMiddleUp->getSprite().setPosition(j * 64.f, i * 64.f);
+                    grassMiddleUp->setSpritePosition(j * 64.f, i * 64.f);
                 grassMiddleUp->setCost(0);
                 drawTile(*target, grassMiddleUp);
                 break;
                 case 2:
-                    grassRightCorner->getSprite().setPosition(j * 64.f, i * 64.f);
+                    grassRightCorner->setSpritePosition(j * 64.f, i * 64.f);
                 grassRightCorner->setCost(0);
                 drawTile(*target, grassRightCorner);
                 break;
                 case 3:
-                    grassMiddleLeft->getSprite().setPosition(j * 64.f, i * 64.f);
+                    grassMiddleLeft->setSpritePosition(j * 64.f, i * 64.f);
                 grassMiddleLeft->setCost(0);
                 drawTile(*target, grassMiddleLeft);
                 break;
                 case 4:
-                    grassCenter->getSprite().setPosition(j * 64.f, i * 64.f);
+                    grassCenter->setSpritePosition(j * 64.f, i * 64.f);
                 grassCenter->setCost(0);
                 drawTile(*target, grassCenter);
                 break;
                 case 5:
-                    grassMiddleRight->getSprite().setPosition(j * 64.f, i * 64.f);
+                    grassMiddleRight->setSpritePosition(j * 64.f, i * 64.f);
                 grassMiddleRight->setCost(0);
                 drawTile(*target, grassMiddleRight);
                 break;
                 case 6:
-                    grassLowCornerLeft->getSprite().setPosition(j * 64.f, i * 64.f);
+                    grassLowCornerLeft->setSpritePosition(j * 64.f, i * 64.f);
                 grassLowCornerLeft->setCost(0);
                 drawTile(*target, grassLowCornerLeft);
                 break;
                 case 7:
-                    grassLowCornerRight->getSprite().setPosition(j * 64.f, i * 64.f);
+                    grassLowCornerRight->setSpritePosition(j * 64.f, i * 64.f);
                 grassLowCornerRight->setCost(0);
                 drawTile(*target, grassLowCornerRight);
                 break;
                 case 8:
-                    grassMiddleLow->getSprite().setPosition(j * 64.f, i * 64.f);
+                    grassMiddleLow->setSpritePosition(j * 64.f, i * 64.f);
                 grassMiddleLow->setCost(0);
                 drawTile(*target, grassMiddleLow);
                 break;
                 case 9:
-                    pathMiddleUp->getSprite().setPosition(j * 64.f, i * 64.f);
+                    pathMiddleUp->setSpritePosition(j * 64.f, i * 64.f);
                 pathMiddleUp->setCost(0);
                 drawTile(*target, pathMiddleUp);
                 break;
                 case 10:
-                    pathMiddleLow->getSprite().setPosition(j * 64.f, i * 64.f);
+                    pathMiddleLow->setSpritePosition(j * 64.f, i * 64.f);
                 pathMiddleLow->setCost(0);
                 drawTile(*target, pathMiddleLow);
                 break;
                 case 11:
-                    water->getSprite().setPosition(j * 64.f, i * 64.f);
+                    water->setSpritePosition(j * 64.f, i * 64.f);
                 water->setCost(9);
                 drawTile(*target, water);
                 break;
                 case 12:
-                    bridge->getSprite().setPosition(j * 64.f, i * 64.f);
+                    bridge->setSpritePosition(j * 64.f, i * 64.f);
                 bridge->setCost(0);
                 drawTile(*target, bridge);
                 break;
                 case 13:
-                    stairsLeft->getSprite().setPosition(j * 64.f, i * 64.f);
+                    stairsLeft->setSpritePosition(j * 64.f, i * 64.f);
                 stairsLeft->setCost(0);
                 drawTile(*target, stairsLeft);
                 break;
                 case 14:
-                    stairsRight->getSprite().setPosition(j * 64.f, i * 64.f);
+                    stairsRight->setSpritePosition(j * 64.f, i * 64.f);
                 stairsRight->setCost(0);
                 drawTile(*target, stairsRight);
                 break;
                 case 15:
-                    brick->getSprite().setPosition(j * 64.f , i * 64.f);
+                    brick->setSpritePosition(j * 64.f, i * 64.f);
                 brick->setCost(9);
                 drawTile(*target, brick);
                 break;
                 case 16:
-                    brick1->getSprite().setPosition(j * 64.f, i * 64.f);
+                    brick1->setSpritePosition(j * 64.f, i * 64.f);
                 brick1->setCost(9);
                 drawTile(*target, brick1);
                 break;
@@ -181,8 +181,6 @@ void Map::drawMap(sf::RenderTarget *target) {
 void Map::drawTile(sf::RenderTarget &target, GameTile *tile) {
 
     target.draw(tile->getSprite());
-
-
 
 }
 

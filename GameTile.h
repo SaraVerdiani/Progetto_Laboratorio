@@ -19,9 +19,10 @@ public:
     ~GameTile();
 
     void setUpSprite(std::string textureName);
-    sf::Sprite& getSprite();
+    sf::Sprite getSprite() const;
     sf::Texture getTexture() const;
     void setCost(int cost);
+    void setSpritePosition(float x, float y);
 
 
 
