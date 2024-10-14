@@ -19,7 +19,7 @@ public:
     MapSearchNode( int px, int py );
     float goalDistanceEstimate( MapSearchNode &nodeGoal ) const;
     bool isGoal( MapSearchNode &nodeGoal ) const;
-    bool getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node );
+    bool getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node ) const;
     float getCost( MapSearchNode &successor ) const;
     bool isSameState( MapSearchNode &rhs ) const;
     size_t aStarHash();

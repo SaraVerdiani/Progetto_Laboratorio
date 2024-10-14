@@ -92,7 +92,7 @@ bool MapSearchNode::isGoal( MapSearchNode &nodeGoal ) const {
 	return false;
 }
 
-bool MapSearchNode::getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node ) {
+bool MapSearchNode::getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node ) const {
 
 	int parent_x = -1;
 	int parent_y = -1;
