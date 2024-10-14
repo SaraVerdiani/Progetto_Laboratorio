@@ -6,54 +6,54 @@
 
 Game::Game() {
 
-    this->initVariables();
-    this->initWindow();
-    this->initMap();
-    this->initPlayer();
+    initVariables();
+    initWindow();
+    initMap();
+    initPlayer();
 }
 
 Game::~Game() {
 
-    delete this->map;
-    delete this->player;
-    delete this->window;
+    delete map;
+    delete player;
+    delete window;
 }
 
 void Game::run() {
 
-    while(this->window->isOpen()) {
-        this->update();
-        this->render();
+    while(window->isOpen()) {
+        update();
+        render();
     }
 }
 
 void Game::update() {
 
-    this->pollEvents();
-    this->player->updateMovement(*this->window);
-    this->player->updateAnimations();
+    pollEvents();
+    player->updateMovement(*window);
+    player->updateAnimations();
 }
 
 void Game::render() const {
 
-    this->window->clear();
-    this->map->drawMap(this->window);
-    this->player->render(*this->window);
-    this->window->display();
+    window->clear();
+    map->drawMap(window);
+    player->render(*window);
+    window->display();
 }
 
 void Game::pollEvents() {
 
-    while(this->window->pollEvent(this->event)) {
+    while(window->pollEvent(event)) {
 
-        switch(this->event.type) {
+        switch(event.type) {
 
             case sf::Event::Closed:
-                this->window->close();
+                window->close();
             break;
             case sf::Event::KeyPressed:
-                if(this->event.key.code == sf::Keyboard::Escape)
-                    this->window->close();
+                if(event.key.code == sf::Keyboard::Escape)
+                    window->close();
             break;
         }
     }
@@ -61,49 +61,49 @@ void Game::pollEvents() {
 
 sf::RenderWindow * Game::getWindow() const {
 
-    return this->window;
+    return window;
 }
 
 int Game::getFrameRateLimit() const {
 
-    return this->frameRateLimit;
+    return frameRateLimit;
 }
 
 bool Game::getVerticalSync() const {
 
-    return this->isVerticalSyncEnabled;
+    return isVerticalSyncEnabled;
 }
 
 Map * Game::getMap() const {
 
-    return this->map;
+    return map;
 }
 
 Player * Game::getPlayer() const {
 
-    return this->player;
+    return player;
 }
 
 void Game::initWindow() {
 
-    this->window = new sf::RenderWindow(sf::VideoMode(1920,1024),"A* algorithm", sf::Style::Default);
-    this->window->setFramerateLimit(frameRateLimit);
-    this->window->setVerticalSyncEnabled(isVerticalSyncEnabled);
+    window = new sf::RenderWindow(sf::VideoMode(1920,1024),"A* algorithm", sf::Style::Default);
+    window->setFramerateLimit(frameRateLimit);
+    window->setVerticalSyncEnabled(isVerticalSyncEnabled);
 }
 
 void Game::initMap() {
 
-    this->map = new Map();
+    map = new Map();
 }
 
 void Game::initPlayer() {
 
-    this->player = new Player();
+    player = new Player();
 }
 
 void Game::initVariables() {
 
-    this->frameRateLimit = 144;
-    this->isVerticalSyncEnabled = false;
+    frameRateLimit = 144;
+    isVerticalSyncEnabled = false;
 }
 

@@ -29,12 +29,12 @@ public:
     sf::Vector2f getPosition() const;
     void setCurrentNode(int node);
     sf::IntRect getCurrentFrame() const;
-    void setMovementSpeed(const float movementSpeed);
+    void setMovementSpeed(const float newMovementSpeed);
     void setPosition(const float x, const float y);
     std::vector<sf::Vector2f> getPath() const;
-    void setPath(const std::vector<sf::Vector2f>& path);
+    void setPath(const std::vector<sf::Vector2f>& newPath);
     short getAnimState() const;
-    void setAnimState(const short animState);
+    void setAnimState(const short newAnimState);
     sf::Clock getAnimationTimer() const;
 
 private:

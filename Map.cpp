@@ -179,17 +179,17 @@ std::array<std::array<int, 30>, 16> Map::getMap() const {
 
 GameTile * Map::getGrassLeftCorner() const {
 
-    return this->grassLeftCorner;
+    return grassLeftCorner;
 }
 
 GameTile * Map::getWater() const {
 
-    return this->water;
+    return water;
 }
 
 GameTile * Map::getBridge() const {
 
-    return this->bridge;
+    return bridge;
 }
 
 

@@ -8,7 +8,7 @@ GameTile::GameTile(const std::string &textureName, int rectLeft, int rectTop , i
 
     sprite.setTextureRect(sf::IntRect(rectLeft, rectTop, rectWidth, rectHeight));
     sprite.setScale(scale);
-    this->setUpSprite(textureName);
+    setUpSprite(textureName);
 
 }
 
@@ -26,12 +26,12 @@ void GameTile::setUpSprite(std::string textureName) {
 
 sf::Sprite GameTile::getSprite() const {
 
-    return this->sprite;
+    return sprite;
 }
 
 sf::Texture  GameTile::getTexture() const {
 
-    return this->texture;
+    return texture;
 }
 
 void GameTile::setCost(int cost) {
