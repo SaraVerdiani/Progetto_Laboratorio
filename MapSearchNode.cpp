@@ -4,17 +4,17 @@
 
 #include "MapSearchNode.h"
 
-int getMap( int x, int y ) {
+int MapSearchNode::getMapNode( int x, int y ) const {
 	if( x < 0 ||
-	    x >= MAP_WIDTH ||
+	    x >= 30 ||
 		 y < 0 ||
-		 y >= MAP_HEIGHT
+		 y >= 16
 	  )
 	{
 		return 9;
 	}
 
-	return world_map[x][y];
+	return nodeMap[x][y];
 }
 
 bool MapSearchNode::isSameState( MapSearchNode &rhs ) const {
@@ -104,28 +104,28 @@ bool MapSearchNode::getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 
 	MapSearchNode NewNode;
 
-	if( (getMap( x-1, y ) < 9)
+	if( (getMapNode( x-1, y ) < 9)
 		&& !((parent_x == x-1) && (parent_y == y))
 	  ) {
 		NewNode = MapSearchNode( x-1, y );
 		astarsearch->AddSuccessor( NewNode );
 	}
 
-	if( (getMap( x, y-1 ) < 9)
+	if( (getMapNode( x, y-1 ) < 9)
 		&& !((parent_x == x) && (parent_y == y-1))
 	  ) {
 		NewNode = MapSearchNode( x, y-1 );
 		astarsearch->AddSuccessor( NewNode );
 	}
 
-	if( (getMap( x+1, y ) < 9)
+	if( (getMapNode( x+1, y ) < 9)
 		&& !((parent_x == x+1) && (parent_y == y))
 	  ) {
 		NewNode = MapSearchNode( x+1, y );
 		astarsearch->AddSuccessor( NewNode );
 	}
 
-	if( (getMap( x, y+1 ) < 9)
+	if( (getMapNode( x, y+1 ) < 9)
 		&& !((parent_x == x) && (parent_y == y+1))
 		) {
 		NewNode = MapSearchNode( x, y+1 );
@@ -137,6 +137,6 @@ bool MapSearchNode::getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapS
 
 float MapSearchNode::getCost( MapSearchNode &successor ) const {
 
-	return (float) getMap( x, y );
+	return (float) getMapNode( x, y );
 }
 

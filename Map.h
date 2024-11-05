@@ -16,6 +16,7 @@ public:
     ~Map();
     void drawMap(sf::RenderTarget* target) const;
     void drawTile(sf::RenderTarget &target, GameTile* tile) const;
+    void initNodeMap();
     std::array<std::array<int, 30>, 16> getMap() const;
     GameTile* getGrassLeftCorner() const;
     GameTile* getWater() const;

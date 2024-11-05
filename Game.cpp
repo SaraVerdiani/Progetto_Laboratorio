@@ -94,6 +94,7 @@ void Game::initWindow() {
 void Game::initMap() {
 
     map = new Map();
+    map->initNodeMap();
 }
 
 void Game::initPlayer() {

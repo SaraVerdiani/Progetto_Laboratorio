@@ -5,12 +5,12 @@
 #ifndef MAPSEARCHNODE_H
 #define MAPSEARCHNODE_H
 
+#include <array>
+
 #include "stlastar.h"
 
 
-const int MAP_HEIGHT = 16;
-const int MAP_WIDTH = 30;
-inline int world_map[MAP_WIDTH][MAP_HEIGHT];
+inline  std::array<std::array<int, 16>, 30> nodeMap;
 
 class MapSearchNode {
 
@@ -19,6 +19,7 @@ public:
     MapSearchNode( int px, int py );
     float goalDistanceEstimate( MapSearchNode &nodeGoal ) const;
     bool isGoal( MapSearchNode &nodeGoal ) const;
+    int getMapNode(int x, int y) const;
     bool getSuccessors( AStarSearch<MapSearchNode> *astarsearch, MapSearchNode *parent_node ) const;
     float getCost( MapSearchNode &successor ) const;
     bool isSameState( MapSearchNode &rhs ) const;

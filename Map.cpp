@@ -79,87 +79,70 @@ void Map::drawMap(sf::RenderTarget *target) const {
             switch (type) {
                 case 0:
                     grassLeftCorner->setSpritePosition(j * 64.f, i * 64.f);
-                grassLeftCorner->setCost(0);
                 drawTile(*target, grassLeftCorner);
                 break;
                 case 1:
                     grassMiddleUp->setSpritePosition(j * 64.f, i * 64.f);
-                grassMiddleUp->setCost(0);
                 drawTile(*target, grassMiddleUp);
                 break;
                 case 2:
                     grassRightCorner->setSpritePosition(j * 64.f, i * 64.f);
-                grassRightCorner->setCost(0);
                 drawTile(*target, grassRightCorner);
                 break;
                 case 3:
                     grassMiddleLeft->setSpritePosition(j * 64.f, i * 64.f);
-                grassMiddleLeft->setCost(0);
                 drawTile(*target, grassMiddleLeft);
                 break;
                 case 4:
                     grassCenter->setSpritePosition(j * 64.f, i * 64.f);
-                grassCenter->setCost(0);
                 drawTile(*target, grassCenter);
                 break;
                 case 5:
                     grassMiddleRight->setSpritePosition(j * 64.f, i * 64.f);
-                grassMiddleRight->setCost(0);
                 drawTile(*target, grassMiddleRight);
                 break;
                 case 6:
                     grassLowCornerLeft->setSpritePosition(j * 64.f, i * 64.f);
-                grassLowCornerLeft->setCost(0);
                 drawTile(*target, grassLowCornerLeft);
                 break;
                 case 7:
                     grassLowCornerRight->setSpritePosition(j * 64.f, i * 64.f);
-                grassLowCornerRight->setCost(0);
                 drawTile(*target, grassLowCornerRight);
                 break;
                 case 8:
                     grassMiddleLow->setSpritePosition(j * 64.f, i * 64.f);
-                grassMiddleLow->setCost(0);
                 drawTile(*target, grassMiddleLow);
                 break;
                 case 9:
                     pathMiddleUp->setSpritePosition(j * 64.f, i * 64.f);
-                pathMiddleUp->setCost(0);
                 drawTile(*target, pathMiddleUp);
                 break;
                 case 10:
                     pathMiddleLow->setSpritePosition(j * 64.f, i * 64.f);
-                pathMiddleLow->setCost(0);
                 drawTile(*target, pathMiddleLow);
                 break;
                 case 11:
                     water->setSpritePosition(j * 64.f, i * 64.f);
-                water->setCost(9);
                 drawTile(*target, water);
                 break;
                 case 12:
                     bridge->setSpritePosition(j * 64.f, i * 64.f);
-                bridge->setCost(0);
                 drawTile(*target, bridge);
                 break;
                 case 13:
                     stairsLeft->setSpritePosition(j * 64.f, i * 64.f);
-                stairsLeft->setCost(0);
                 drawTile(*target, stairsLeft);
                 break;
                 case 14:
                     stairsRight->setSpritePosition(j * 64.f, i * 64.f);
-                stairsRight->setCost(0);
                 drawTile(*target, stairsRight);
                 break;
                 case 15:
                     brick->setSpritePosition(j * 64.f, i * 64.f);
-                brick->setCost(9);
                 drawTile(*target, brick);
                 break;
                 case 16:
                     brick1->setSpritePosition(j * 64.f, i * 64.f);
-                brick1->setCost(9);
                 drawTile(*target, brick1);
                 break;
             }
@@ -170,6 +153,41 @@ void Map::drawMap(sf::RenderTarget *target) const {
 void Map::drawTile(sf::RenderTarget &target, GameTile *tile) const {
 
     target.draw(tile->getSprite());
+}
+
+void Map::initNodeMap() {
+
+    int type = 0;
+
+    for (int i = 0; i < 30; i ++) {
+        for (int j = 0; j < 16; j ++) {
+
+            type = gameMap[j][i];
+            switch (type) {
+                case 0:
+                case 1:
+                case 2:
+                case 3:
+                case 4:
+                case 5:
+                case 6:
+                case 7:
+                case 8:
+                case 9:
+                case 10:
+                case 12:
+                case 13:
+                case 14:
+                nodeMap[i][j] = 0;
+                break;
+                case 11:
+                case 15:
+                case 16:
+                nodeMap[i][j] = 9;
+                break;
+            }
+        }
+    }
 }
 
 std::array<std::array<int, 30>, 16> Map::getMap() const {
