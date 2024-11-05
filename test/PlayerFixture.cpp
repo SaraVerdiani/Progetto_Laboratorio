@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "../Player.h"
 #include "../GameTile.h"
+#include "../Map.h"
 
 class PlayerFunctionTest : public Player {
 
@@ -83,7 +84,7 @@ public:
 
     void setTileCost(int x, int y, int cost) {
 
-        world_map[x][y] = cost;
+        nodeMap[x][y] = cost;
     }
 
     sf::Vector2f startPos;
@@ -99,6 +100,8 @@ public:
 
         p = new Player();
         pTest = new PlayerFunctionTest();
+        map = new Map();
+        map->initNodeMap();
         window.create(sf::VideoMode(1920,1024),"TestWindow");
         p->setPosition(256.f,192.f);
         p->setMovementSpeed(1.5f);
@@ -107,7 +110,10 @@ public:
 protected:
     Player *p = nullptr;
     PlayerFunctionTest* pTest = nullptr;
+    Map* map = nullptr;
     sf::RenderWindow window;
+    MapSearchNode node;
+    AStarSearch<MapSearchNode> aStarSearch;
 };
 
 TEST_F(PlayerFixture, TestMove) {
@@ -156,6 +162,25 @@ TEST_F(PlayerFixture, TestFindNode) {
     pTest->findNode(window);
 
     ASSERT_TRUE(pTest->path.empty());
+
+
+
+    //Right path is found
+
+    pTest->path.clear();
+    pTest->setStartPos(200.f,300.f);
+    pTest->setEndPos(704.f,384.f);
+    pTest->findNode(window);
+
+    std::vector<sf::Vector2f> expectedPath = {{200.f,300.f},{256.f,256.f}, {320.f,256.f}, {384.f,256.f}, {384.f,192.f}, {448.f,192.f}, {512.f,192.f}, {576.f,192.f}, {640.f,192.f}, {704.f,192.f}, {704.f,256.f}, {768.f,256.f}, {832.f,256.f}, {832.f,320.f}, {832.f,384.f}, {768.f,384.f}, {704.f,384.f}
+    };
+
+    ASSERT_EQ(pTest->path, expectedPath);
+
+
+
+
+
 
 }
 
