@@ -6,11 +6,7 @@
 #define MAPSEARCHNODE_H
 
 #include <array>
-
 #include "stlastar.h"
-
-
-inline  std::array<std::array<int, 16>, 30> nodeMap;
 
 class MapSearchNode {
 
@@ -29,8 +25,10 @@ public:
     int getY() const;
     void setX(int newX);
     void setY(int newY);
+    static void setNodeCost(int x, int y, int cost);
 
 private:
+    static std::array<std::array<int, 16>, 30> nodeMap;
     int x;
     int y;
 };

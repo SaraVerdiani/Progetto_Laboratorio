@@ -4,13 +4,14 @@
 
 #include "MapSearchNode.h"
 
+std::array<std::array<int, 16>, 30> MapSearchNode::nodeMap = {};
+
 int MapSearchNode::getMapNode( int x, int y ) const {
 	if( x < 0 ||
 	    x >= 30 ||
 		 y < 0 ||
 		 y >= 16
-	  )
-	{
+	  ) {
 		return 9;
 	}
 
@@ -20,12 +21,10 @@ int MapSearchNode::getMapNode( int x, int y ) const {
 bool MapSearchNode::isSameState( MapSearchNode &rhs ) const {
 
 	if( (x == rhs.x) &&
-		(y == rhs.y) )
-	{
+		(y == rhs.y) ) {
 		return true;
 	}
-	else
-	{
+	else {
 		return false;
 	}
 }
@@ -64,6 +63,11 @@ void MapSearchNode::setY(int newY) {
 	y = newY;
 }
 
+void MapSearchNode::setNodeCost(int x, int y, int cost) {
+
+	nodeMap[x][y] = cost;
+}
+
 
 MapSearchNode::MapSearchNode() {
 
@@ -84,8 +88,7 @@ float MapSearchNode::goalDistanceEstimate( MapSearchNode &nodeGoal ) const{
 bool MapSearchNode::isGoal( MapSearchNode &nodeGoal ) const {
 
 	if( (x == nodeGoal.x) &&
-		(y == nodeGoal.y) )
-	{
+		(y == nodeGoal.y) ) {
 		return true;
 	}
 

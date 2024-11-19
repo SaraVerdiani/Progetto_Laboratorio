@@ -178,12 +178,12 @@ void Map::initNodeMap() {
                 case 12:
                 case 13:
                 case 14:
-                nodeMap[i][j] = 0;
+                MapSearchNode::setNodeCost(i, j, 0);
                 break;
                 case 11:
                 case 15:
                 case 16:
-                nodeMap[i][j] = 9;
+                MapSearchNode::setNodeCost(i, j, 9);
                 break;
             }
         }

@@ -84,7 +84,7 @@ public:
 
     void setTileCost(int x, int y, int cost) {
 
-        nodeMap[x][y] = cost;
+        MapSearchNode::setNodeCost(x,y,cost);
     }
 
     sf::Vector2f startPos;
@@ -176,12 +176,6 @@ TEST_F(PlayerFixture, TestFindNode) {
     };
 
     ASSERT_EQ(pTest->path, expectedPath);
-
-
-
-
-
-
 }
 
 TEST_F(PlayerFixture, TestUpdateMovement) {
