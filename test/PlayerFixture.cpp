@@ -172,10 +172,43 @@ TEST_F(PlayerFixture, TestFindNode) {
     pTest->setEndPos(704.f,384.f);
     pTest->findNode(window);
 
-    std::vector<sf::Vector2f> expectedPath = {{200.f,300.f},{256.f,256.f}, {320.f,256.f}, {384.f,256.f}, {384.f,192.f}, {448.f,192.f}, {512.f,192.f}, {576.f,192.f}, {640.f,192.f}, {704.f,192.f}, {704.f,256.f}, {768.f,256.f}, {832.f,256.f}, {832.f,320.f}, {832.f,384.f}, {768.f,384.f}, {704.f,384.f}
+    std::vector<sf::Vector2f> expectedPath = {
+        {200.f,300.f},{256.f,256.f},
+        {320.f,256.f}, {384.f,256.f},
+        {384.f,192.f}, {448.f,192.f},
+        {512.f,192.f}, {576.f,192.f},
+        {640.f,192.f}, {704.f,192.f},
+        {704.f,256.f}, {768.f,256.f},
+        {832.f,256.f}, {832.f,320.f},
+        {832.f,384.f}, {768.f,384.f},
+        {704.f,384.f}
     };
 
     ASSERT_EQ(pTest->path, expectedPath);
+
+    pTest->path.clear();
+    pTest->setStartPos(200.f,300.f);
+    pTest->setEndPos(1472.f,384.f);
+    pTest->findNode(window);
+
+    std::vector<sf::Vector2f> expectedPath1 = {
+        {200.f,300.f},
+        {256.f,256.f},
+        {320.f,256.f},{384.f,256.f},
+        {384.f,192.f},{448.f,192.f},
+        {512.f,192.f},{576.f,192.f},
+        {640.f,192.f},{704.f,192.f},
+        {768.f,192.f},{832.f,192.f},
+        {896.f,192.f},{960.f,192.f},
+        {1024.f,192.f},{1088.f,192.f}, {1152.f,192.f},
+        {1216.f,192.f},{1280.f,192.f},
+        {1280.f,256.f},{1280.f,320.f},
+        {1280.f,384.f},{1344.f,384.f},
+        {1408.f,384.f},{1472.f,384.f}
+    };
+
+    ASSERT_EQ(pTest->path, expectedPath1);
+
 }
 
 TEST_F(PlayerFixture, TestUpdateMovement) {
